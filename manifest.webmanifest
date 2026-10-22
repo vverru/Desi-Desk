@@ -1,0 +1,17 @@
+{
+  "name": "DesiDesk - All-in-One Online Tools",
+  "short_name": "DesiDesk",
+  "description": "Fast, free and 100% private browser-based online tools for PDF, images, calculators and developers.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

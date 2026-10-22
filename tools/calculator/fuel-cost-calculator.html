@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Cost Calculator Online - Trip Petrol & Diesel Expense | DesiDesk</title>
+  <meta name="description" content="Calculate total fuel cost and liters required for road trips based on distance, vehicle mileage, and petrol/diesel price on DesiDesk.">
+  <meta name="keywords" content="fuel cost calculator, trip fuel expense, petrol mileage calculator, diesel cost calculator">
+  <link rel="canonical" href="https://desidesk.in/tools/calculator/fuel-cost-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <meta name="theme-color" content="#d97706">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://desidesk.in/tools/calculator/fuel-cost-calculator.html">
+  <meta property="og:title" content="Fuel Cost Calculator Online - Trip Petrol & Diesel Expense | DesiDesk">
+  <meta property="og:description" content="Calculate total fuel cost and liters required for road trips based on distance, vehicle mileage, and petrol/diesel price on DesiDesk.">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fuel Cost Calculator Online - Trip Petrol & Diesel Expense | DesiDesk">
+  <meta name="twitter:description" content="Calculate total fuel cost and liters required for road trips based on distance, vehicle mileage, and petrol/diesel price on DesiDesk.">
+
+  <style>
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  --secondary: #0f172a;
+  --accent: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --border-light: #e2e8f0;
+  --border-focus: #3b82f6;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+/* Layout Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Header & Navbar */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--secondary);
+  letter-spacing: -0.025em;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #1e40af, #2563eb);
+  color: white;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+}
+
+.logo-domain {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.15s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-search-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header-search-btn:hover {
+  background-color: #e2e8f0;
+  color: var(--text-main);
+  border-color: #cbd5e1;
+}
+
+.search-shortcut-badge {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+/* Mobile Drawer */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.mobile-menu.open {
+  display: block;
+}
+
+.mobile-menu-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 320px;
+  height: 100%;
+  background: white;
+  padding: 1.5rem;
+  overflow-y: auto;
+  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.mobile-nav-link:hover {
+  background-color: var(--bg-subtle);
+  color: var(--primary);
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 3.5rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--secondary);
+  margin-bottom: 1.25rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Big Search Bar */
+.search-container {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+}
+
+.search-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-icon {
+  position: absolute;
+  left: 1.25rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 3.25rem;
+  font-size: 1.05rem;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-full);
+  background-color: white;
+  color: var(--text-main);
+  box-shadow: var(--shadow-md);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), var(--shadow-md);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: none;
+  padding: 4px;
+}
+
+/* Quick Filter Pills */
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-pill {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: white;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-pill:hover, .filter-pill.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Section Headings */
+.section-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--secondary);
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Tool & Category Grids */
+.grid-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.grid-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Tool Card */
+.tool-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-border);
+  color: inherit;
+}
+
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.tool-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.category-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+.tool-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+}
+
+.tool-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 0.75rem;
+}
+
+.tool-card-footer {
+  display: flex;
+  align-items: center;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--primary);
+  gap: 0.35rem;
+  margin-top: auto;
+}
+
+/* Category Card */
+.cat-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.cat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-focus);
+  color: inherit;
+}
+
+.cat-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--bg-subtle);
+  color: var(--secondary);
+}
+
+.cat-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.25rem;
+}
+
+.cat-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.cat-tool-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 0.4rem;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbs a {
+  color: var(--text-muted);
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary);
+}
+
+.breadcrumbs .sep {
+  color: var(--border-light);
+  user-select: none;
+}
+
+.breadcrumbs .current {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Tool Page Header */
+.tool-page-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.25rem;
+}
+
+.tool-page-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-page-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+}
+
+.tool-page-lead {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+/* Tool Main Workspace Card */
+.tool-workspace {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 3.5rem;
+}
+
+/* Form Controls & Layout */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--secondary);
+  margin-bottom: 0.45rem;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background-color: white;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-range {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Drag and Drop Upload Zone */
+.dropzone {
+  border: 2px dashed var(--border-focus);
+  background-color: var(--primary-light);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.dropzone:hover, .dropzone.dragover {
+  background-color: #dbeafe;
+  border-color: var(--primary-hover);
+}
+
+.dropzone-icon {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.dropzone-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.25rem;
+}
+
+.dropzone-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dropzone-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Button System */
+.btn-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--bg-subtle);
+  border-color: var(--border-light);
+  color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: var(--secondary);
+}
+
+.btn-success {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #059669;
+  color: white;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--border-light);
+  color: var(--text-muted);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+}
+
+.btn-sm {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Results & Output Card */
+.result-box {
+  margin-top: 1.75rem;
+  padding: 1.5rem;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+}
+
+.result-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* Alert Boxes */
+.alert {
+  padding: 0.95rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.alert-info {
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: #1e40af;
+}
+
+.alert-success {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.alert-warning {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
+.alert-error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+/* Code Previews */
+.code-preview {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* SEO Content Section */
+.seo-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content-block {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.content-block h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.content-block h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--secondary);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.content-block p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.65;
+}
+
+.content-block ul, .content-block ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+}
+
+.content-block li {
+  margin-bottom: 0.45rem;
+  line-height: 1.6;
+}
+
+/* Steps Grid */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.step-card {
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  border: 1px solid var(--border-light);
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.35rem;
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Accordion FAQs */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: white;
+}
+
+.faq-question {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--secondary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  user-select: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 1.25rem;
+  color: var(--primary);
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+
+details[open] .faq-question::after {
+  content: "−";
+}
+
+.faq-answer {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.6;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--secondary);
+  color: #94a3b8;
+  padding: 4rem 0 2rem;
+  margin-top: auto;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: white;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-heading {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  transition: color 0.15s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-legal-links a {
+  color: #94a3b8;
+}
+
+.footer-legal-links a:hover {
+  color: white;
+}
+
+/* Live Search Modal */
+.search-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 3rem 1rem;
+}
+
+.search-modal.open {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search-modal-box {
+  background: white;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 620px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.search-modal-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+  gap: 0.75rem;
+}
+
+.search-modal-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-family: inherit;
+  color: var(--text-main);
+}
+
+.search-modal-results {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s;
+}
+
+.search-result-item:hover, .search-result-item.selected {
+  background-color: var(--bg-subtle);
+}
+
+.search-result-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.search-result-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--secondary);
+}
+
+.search-result-cat {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Canvas / Image Preview Workspace */
+.canvas-wrapper {
+  max-width: 100%;
+  overflow: auto;
+  text-align: center;
+  margin: 1rem 0;
+  background: repeating-conic-gradient(#f1f5f9 0% 25%, #ffffff 0% 50%) 50% / 20px 20px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.canvas-wrapper canvas, .canvas-wrapper img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Tabs */
+.tabs-nav {
+  display: flex;
+  border-bottom: 2px solid var(--border-light);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-actions .search-shortcut-badge {
+    display: none;
+  }
+  .nav-links {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .form-grid-2, .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .tool-workspace {
+    padding: 1.25rem;
+  }
+  .content-block {
+    padding: 1.25rem;
+  }
+}
+
+  </style>
+  
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../../index.html" class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <span>Desi<span class="logo-domain">Desk</span></span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="../../index.html" class="nav-link ">All Tools</a></li>
+      <li><a href="../../categories/pdf-tools.html" class="nav-link ">PDF</a></li>
+      <li><a href="../../categories/image-tools.html" class="nav-link ">Image</a></li>
+      <li><a href="../../categories/text-tools.html" class="nav-link ">Text</a></li>
+      <li><a href="../../categories/calculator-tools.html" class="nav-link active">Calculators</a></li>
+      <li><a href="../../categories/converter-tools.html" class="nav-link ">Converters</a></li>
+      <li><a href="../../categories/developer-tools.html" class="nav-link ">Developer</a></li>
+      <li><a href="../../about.html" class="nav-link ">About</a></li>
+    </ul>
+
+    <div class="header-actions">
+      <button class="header-search-btn" id="openSearchBtn" aria-label="Search tools">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Search</span>
+        <span class="search-shortcut-badge">⌘K</span>
+      </button>
+
+      <button class="menu-toggle" id="mobileMenuOpen" aria-label="Open mobile menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-content">
+    <div class="mobile-menu-header">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <span>Desi<span class="logo-domain">Desk</span></span>
+      </a>
+      <button id="mobileMenuClose" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-muted)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="../../index.html" class="mobile-nav-link">Home (All Tools)</a></li>
+      <li><a href="../../categories/pdf-tools.html" class="mobile-nav-link">PDF Tools</a></li>
+      <li><a href="../../categories/image-tools.html" class="mobile-nav-link">Image Tools</a></li>
+      <li><a href="../../categories/text-tools.html" class="mobile-nav-link">Text Tools</a></li>
+      <li><a href="../../categories/calculator-tools.html" class="mobile-nav-link">Calculators</a></li>
+      <li><a href="../../categories/converter-tools.html" class="mobile-nav-link">Converters</a></li>
+      <li><a href="../../categories/developer-tools.html" class="mobile-nav-link">Developer Tools</a></li>
+      <li><a href="../../categories/generator-tools.html" class="mobile-nav-link">Generators</a></li>
+      <li><a href="../../categories/utility-tools.html" class="mobile-nav-link">File Utilities</a></li>
+      <li style="margin-top:0.75rem;border-top:1px solid var(--border-light);padding-top:0.75rem;"><a href="../../about.html" class="mobile-nav-link">About DesiDesk</a></li>
+      <li><a href="../../privacy-policy.html" class="mobile-nav-link">Privacy Policy</a></li>
+      <li><a href="../../contact.html" class="mobile-nav-link">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<main class="main-content">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="../../categories/calculator-tools.html">Calculators</a>
+      <span class="sep">/</span>
+      <span class="current">Fuel Cost Trip Calculator</span>
+    </nav>
+
+    <div class="tool-page-header">
+      <div class="tool-page-icon" style="color:#d97706;background:#d9770615;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"/></svg>
+      </div>
+      <h1 class="tool-page-title">Fuel Cost Trip Calculator</h1>
+      <p class="tool-page-lead">Estimate travel fuel expenses based on trip distance, vehicle mileage, and fuel price per liter.</p>
+      <div class="privacy-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>100% Client-Side Privacy • Secure &amp; Fast</span>
+      </div>
+    </div>
+
+    <!-- Active Tool Workspace -->
+    <div class="tool-workspace">
+      
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label class="form-label">Trip Distance (km):</label>
+          <input type="number" id="fuelDistance" class="form-input" value="350" min="1" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vehicle Mileage (km/L):</label>
+          <input type="number" id="fuelMileage" class="form-input" value="18" min="1" step="0.5" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Fuel Price (₹ / Liter):</label>
+          <input type="number" id="fuelPrice" class="form-input" value="102" min="1" />
+        </div>
+      </div>
+
+      <div class="result-box" style="margin-top:1.5rem;text-align:center;">
+        <div style="font-size:0.9rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;">Estimated Fuel Cost</div>
+        <div id="resFuelCost" style="font-size:2.25rem;font-weight:800;color:var(--primary);margin-top:0.25rem;">₹1,983</div>
+        <div id="resFuelLiters" style="font-size:0.95rem;color:var(--text-muted);margin-top:0.25rem;">Fuel Needed: 19.4 Liters (₹5.67 per km)</div>
+      </div>
+    
+    </div>
+
+    <!-- SEO & Educational Guide -->
+    <section class="seo-section">
+      <div class="content-block">
+        <h2>How to Use Fuel Cost Trip Calculator</h2>
+        <div class="steps-grid">
+          
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-title">Step 1</div>
+              <div class="step-desc">Enter total trip distance in kilometers.</div>
+            </div>
+          
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-title">Step 2</div>
+              <div class="step-desc">Enter your vehicle fuel efficiency (km per liter).</div>
+            </div>
+          
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-title">Step 3</div>
+              <div class="step-desc">Enter current fuel price per liter (₹).</div>
+            </div>
+          
+            <div class="step-card">
+              <div class="step-number">4</div>
+              <div class="step-title">Step 4</div>
+              <div class="step-desc">View total fuel required and total trip expense.</div>
+            </div>
+          
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h2>Key Features &amp; Benefits</h2>
+        <ul>
+          <li>Calculates total liters and total cost.</li><li>Cost per kilometer breakdown.</li><li>Round-trip distance multiplier.</li><li>Instant calculation.</li>
+        </ul>
+      </div>
+
+      
+      <div class="content-block">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          
+            <details class="faq-item" open>
+              <summary class="faq-question">How is fuel cost calculated?</summary>
+              <div class="faq-answer">Total Fuel Cost = (Distance / Mileage) × Fuel Price.</div>
+            </details>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="content-block">
+        <h2>Related Online Tools</h2>
+        <div class="grid-tools" style="margin-top:1rem;margin-bottom:0;">
+          
+            <a href="../calculator/tip-and-bill-splitter.html" class="tool-card" onclick="saveRecent('tip-and-bill-splitter')">
+              <div class="tool-card-header">
+                <span class="category-tag">Calculators</span>
+              </div>
+              <h3 class="tool-card-title">Tip & Bill Splitter Calculator</h3>
+              <p class="tool-card-desc">Split dining bills evenly among friends and calculate tip amounts per person.</p>
+              <div class="tool-card-footer">
+                <span>Open Tool &rarr;</span>
+              </div>
+            </a>
+          
+            <a href="../calculator/percentage-calculator.html" class="tool-card" onclick="saveRecent('percentage-calculator')">
+              <div class="tool-card-header">
+                <span class="category-tag">Calculators</span>
+              </div>
+              <h3 class="tool-card-title">Percentage Calculator</h3>
+              <p class="tool-card-desc">Solve all percentage problems: X% of Y, what % is X of Y, and percentage increase/decrease.</p>
+              <div class="tool-card-footer">
+                <span>Open Tool &rarr;</span>
+              </div>
+            </a>
+          
+        </div>
+      </div>
+      
+    </section>
+  </div>
+</main>
+
+
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-box">
+    <div class="search-modal-header">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-modal-input" id="searchModalInput" placeholder="Search 130+ online tools (e.g. compress, merge, emi, json)..." autocomplete="off" />
+      <button id="closeSearchBtn" style="background:none;border:none;cursor:pointer;color:var(--text-muted);padding:4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-modal-results" id="searchModalResults">
+      <div style="padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">Type to instantly search tools...</div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../../index.html" class="footer-logo">
+          <div class="logo-icon" style="background:linear-gradient(135deg, #3b82f6, #1d4ed8);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <span>DesiDesk.in</span>
+        </a>
+        <p class="footer-text">
+          Free, fast and 100% private browser-based online tools for everyday productivity. All processing runs locally on your device with zero server uploads.
+        </p>
+        <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:#10b981;font-weight:600;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>100% Client-Side Privacy Guarantee</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Tool Categories</h4>
+        <ul class="footer-links">
+          <li><a href="../../categories/pdf-tools.html">PDF Tools</a></li>
+          <li><a href="../../categories/image-tools.html">Image Tools</a></li>
+          <li><a href="../../categories/text-tools.html">Text Tools</a></li>
+          <li><a href="../../categories/calculator-tools.html">Calculators</a></li>
+          <li><a href="../../categories/converter-tools.html">Unit Converters</a></li>
+          <li><a href="../../categories/developer-tools.html">Developer Tools</a></li>
+          <li><a href="../../categories/generator-tools.html">Generators</a></li>
+          <li><a href="../../categories/utility-tools.html">File Utilities</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../../tools/image/image-compressor.html">Image Compressor</a></li>
+          <li><a href="../../tools/pdf/merge-pdf.html">Merge PDF</a></li>
+          <li><a href="../../tools/calculator/emi-calculator.html">EMI Calculator</a></li>
+          <li><a href="../../tools/calculator/gst-calculator.html">GST Calculator</a></li>
+          <li><a href="../../tools/developer/json-formatter.html">JSON Formatter</a></li>
+          <li><a href="../../tools/generator/qr-code-generator.html">QR Code Generator</a></li>
+          <li><a href="../../tools/text/word-counter.html">Word Counter</a></li>
+          <li><a href="../../tools/converter/length-converter.html">Length Converter</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Company & Legal</h4>
+        <ul class="footer-links">
+          <li><a href="../../about.html">About DesiDesk</a></li>
+          <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../../terms.html">Terms of Service</a></li>
+          <li><a href="../../disclaimer.html">Disclaimer</a></li>
+          <li><a href="../../contact.html">Contact Us</a></li>
+          <li><a href="../../sitemap.xml">XML Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DesiDesk.in. All rights reserved. Crafted for speed, privacy, and simplicity.</div>
+      <div class="footer-legal-links">
+        <a href="../../privacy-policy.html">Privacy</a>
+        <a href="../../terms.html">Terms</a>
+        <a href="../../disclaimer.html">Disclaimer</a>
+        <a href="../../contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+
+(function() {
+  const tools = [{"id":"merge-pdf","name":"Merge PDF Files","desc":"Combine multiple PDF documents into a single organized file in seconds.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/merge-pdf.html","keywords":"merge pdf, combine pdf files, join pdf, free pdf merger, merge pdf online"},{"id":"split-pdf","name":"Split PDF Pages","desc":"Extract individual pages or custom page ranges from any PDF document.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/split-pdf.html","keywords":"split pdf, extract pdf pages, separate pdf, split pdf online, divide pdf"},{"id":"rotate-pdf","name":"Rotate PDF Pages","desc":"Permanently rotate PDF pages clockwise or counter-clockwise (90°, 180°, 270°).","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/rotate-pdf.html","keywords":"rotate pdf, rotate pdf pages, turn pdf, flip pdf pages, free pdf rotate"},{"id":"jpg-to-pdf","name":"JPG to PDF Converter","desc":"Convert JPG, PNG, and WebP images into a single clean PDF document.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/jpg-to-pdf.html","keywords":"jpg to pdf, convert image to pdf, png to pdf, photo to pdf, free jpg to pdf"},{"id":"add-page-numbers-pdf","name":"Add Page Numbers to PDF","desc":"Number pages of your PDF documents with customizable position and format.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/add-page-numbers-pdf.html","keywords":"add page numbers to pdf, number pdf pages, paginate pdf, free pdf numbering"},{"id":"watermark-pdf","name":"Add Watermark to PDF","desc":"Stamp confidential, draft, or custom text watermarks diagonally across PDF pages.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/watermark-pdf.html","keywords":"watermark pdf, stamp pdf, add watermark to pdf, protect pdf document, pdf watermark online"},{"id":"pdf-page-counter","name":"PDF Page Counter & Inspector","desc":"Inspect exact page count, page dimensions, orientation and file size of any PDF.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/pdf-page-counter.html","keywords":"pdf page counter, count pages in pdf, check pdf pages, pdf info viewer"},{"id":"pdf-metadata-viewer","name":"PDF Metadata Viewer & Editor","desc":"View and edit Title, Author, Subject, Keywords and Producer metadata of your PDF.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/pdf-metadata-viewer.html","keywords":"pdf metadata viewer, edit pdf metadata, change pdf author, remove pdf metadata, view pdf properties"},{"id":"text-to-pdf","name":"Text to PDF Converter","desc":"Create a clean, formatted PDF document directly from raw text or notes.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/text-to-pdf.html","keywords":"text to pdf, convert txt to pdf, notes to pdf, create pdf from text"},{"id":"organize-pdf","name":"Organize & Reorder PDF Pages","desc":"Reorder, delete, duplicate, or rotate individual pages inside any PDF document.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/organize-pdf.html","keywords":"organize pdf, reorder pdf pages, delete pdf pages, rearrange pdf, sort pdf pages"},{"id":"crop-pdf","name":"Crop PDF Margins","desc":"Trim margins or set crop bounds on all pages of a PDF document.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/crop-pdf.html","keywords":"crop pdf, trim pdf margins, cut pdf borders, crop pdf online, remove pdf whitespace"},{"id":"sign-pdf","name":"Sign PDF (Digital Signature)","desc":"Draw your signature on an interactive pad and stamp it cleanly onto any PDF document.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/sign-pdf.html","keywords":"sign pdf, digital signature, draw signature on pdf, sign document online, electronic signature free"},{"id":"image-compressor","name":"Image Compressor","desc":"Compress JPG, PNG, and WebP images directly in your browser with real-time preview.","cat":"image","catName":"Image Tools","url":"tools/image/image-compressor.html","keywords":"image compressor, compress image online, reduce jpg size, compress png, optimize images, free photo compressor"},{"id":"image-resizer","name":"Image Resizer","desc":"Resize photos by dimensions in pixels or percentage while locking aspect ratio.","cat":"image","catName":"Image Tools","url":"tools/image/image-resizer.html","keywords":"image resizer, resize image online, change photo dimensions, resize picture, free image resizer"},{"id":"image-cropper","name":"Image Cropper","desc":"Crop photos with standard aspect ratios (1:1, 16:9, 4:3) or freeform crop box.","cat":"image","catName":"Image Tools","url":"tools/image/image-cropper.html","keywords":"crop image online, photo cropper, crop photo 16:9, square crop, free image crop"},{"id":"circle-image-cropper","name":"Circle Image Cropper","desc":"Crop any photo into a clean circle with a transparent background for profile avatars.","cat":"image","catName":"Image Tools","url":"tools/image/circle-image-cropper.html","keywords":"circle image crop, round photo cropper, circular avatar maker, profile picture crop"},{"id":"image-rotator-flipper","name":"Image Rotator & Flipper","desc":"Rotate photos 90°, 180°, 270° or flip them horizontally and vertically.","cat":"image","catName":"Image Tools","url":"tools/image/image-rotator-flipper.html","keywords":"rotate image, flip image, mirror photo, flip picture horizontal, rotate photo online"},{"id":"png-to-jpg","name":"PNG to JPG Converter","desc":"Convert PNG images to JPG with custom background color for transparent pixels.","cat":"image","catName":"Image Tools","url":"tools/image/png-to-jpg.html","keywords":"png to jpg, convert png to jpg online, transparent png to jpeg, free photo converter"},{"id":"jpg-to-png","name":"JPG to PNG Converter","desc":"Convert JPG photos into lossless PNG format with clean pixel clarity.","cat":"image","catName":"Image Tools","url":"tools/image/jpg-to-png.html","keywords":"jpg to png, convert jpeg to png, photo to png, free image converter"},{"id":"image-to-webp","name":"Image to WebP Converter","desc":"Convert PNG and JPG images to modern WebP format for fast web page loading.","cat":"image","catName":"Image Tools","url":"tools/image/image-to-webp.html","keywords":"image to webp, png to webp, jpg to webp, convert to webp online, webp image optimizer"},{"id":"image-to-base64","name":"Image to Base64 Converter","desc":"Convert image files into Base64 data URI strings and CSS/HTML code snippets.","cat":"image","catName":"Image Tools","url":"tools/image/image-to-base64.html","keywords":"image to base64, photo to base64, data uri generator, convert image to data url"},{"id":"passport-photo-maker","name":"Passport Photo Maker","desc":"Create passport size photo grids (2x2 inch / 35x45 mm) ready for printing on 4x6 / A4 paper.","cat":"image","catName":"Image Tools","url":"tools/image/passport-photo-maker.html","keywords":"passport photo maker, 2x2 photo maker, 35x45mm photo, printable passport photo sheet, visa photo maker"},{"id":"color-palette-extractor","name":"Color Palette Extractor","desc":"Extract dominant color palettes and HEX/RGB codes from any image.","cat":"image","catName":"Image Tools","url":"tools/image/color-palette-extractor.html","keywords":"color palette extractor, extract colors from image, image color picker, dominant colors, palette generator"},{"id":"image-filters","name":"Photo Filters & Adjustments","desc":"Adjust brightness, contrast, saturation, grayscale, sepia, and blur with real-time preview.","cat":"image","catName":"Image Tools","url":"tools/image/image-filters.html","keywords":"photo filters, image brightness adjuster, contrast filter, black and white photo maker, photo editor online"},{"id":"webp-to-jpg","name":"WebP to JPG Converter","desc":"Convert modern WebP images to widely compatible JPG format in high quality.","cat":"image","catName":"Image Tools","url":"tools/image/webp-to-jpg.html","keywords":"webp to jpg, convert webp to jpeg, webp converter online, save webp as jpg"},{"id":"base64-to-image","name":"Base64 to Image Decoder","desc":"Decode Base64 Data URI strings into previewable and downloadable image files.","cat":"image","catName":"Image Tools","url":"tools/image/base64-to-image.html","keywords":"base64 to image, decode base64 image, base64 to png, data uri to image"},{"id":"image-watermark","name":"Add Watermark to Image","desc":"Stamp customized copyright or brand text watermarks onto any photograph.","cat":"image","catName":"Image Tools","url":"tools/image/image-watermark.html","keywords":"watermark image, add watermark to photo, stamp photo, protect photo online"},{"id":"image-color-picker","name":"Image Color Picker (Eyedropper)","desc":"Click anywhere on an uploaded image to sample exact pixel colors in HEX, RGB, and HSL.","cat":"image","catName":"Image Tools","url":"tools/image/image-color-picker.html","keywords":"image color picker, eyedropper tool online, pick color from photo, hex color from image"},{"id":"word-counter","name":"Word & Character Counter","desc":"Live statistics for words, characters, sentences, paragraphs, reading and speaking time.","cat":"text","catName":"Text Tools","url":"tools/text/word-counter.html","keywords":"word counter, character counter, word count online, sentence counter, reading time calculator"},{"id":"case-converter","name":"Text Case Converter","desc":"Convert text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case.","cat":"text","catName":"Text Tools","url":"tools/text/case-converter.html","keywords":"case converter, uppercase to lowercase, title case converter, camelcase converter, text capitalizer"},{"id":"remove-duplicate-lines","name":"Remove Duplicate Lines","desc":"Eliminate duplicate text lines, trim empty spaces, and sort unique entries.","cat":"text","catName":"Text Tools","url":"tools/text/remove-duplicate-lines.html","keywords":"remove duplicate lines, deduplicate text, delete duplicates, unique lines finder, clean list"},{"id":"sort-text-lines","name":"Sort Text Lines","desc":"Sort lists alphabetically (A-Z, Z-A), numerically, by line length, or reverse order.","cat":"text","catName":"Text Tools","url":"tools/text/sort-text-lines.html","keywords":"sort lines, sort text online, alphabetical sorter, numerical sort list, reverse lines"},{"id":"text-diff-checker","name":"Text Diff Checker","desc":"Compare two text snippets side-by-side to highlight additions, deletions, and edits.","cat":"text","catName":"Text Tools","url":"tools/text/text-diff-checker.html","keywords":"diff checker, text difference, compare text online, side by side diff, text comparison"},{"id":"slug-generator","name":"SEO Slug Generator","desc":"Convert article titles and headlines into clean, URL-friendly SEO slugs.","cat":"text","catName":"Text Tools","url":"tools/text/slug-generator.html","keywords":"slug generator, url slug, seo slug creator, title to url, string to slug"},{"id":"lorem-ipsum-generator","name":"Lorem Ipsum Generator","desc":"Generate custom placeholder dummy text in paragraphs, sentences, or words.","cat":"text","catName":"Text Tools","url":"tools/text/lorem-ipsum-generator.html","keywords":"lorem ipsum generator, dummy text generator, placeholder text, fake text, lorem ipsum online"},{"id":"remove-extra-spaces","name":"Remove Extra Spaces & Blank Lines","desc":"Clean redundant spaces, empty lines, and tabs from your text instantly.","cat":"text","catName":"Text Tools","url":"tools/text/remove-extra-spaces.html","keywords":"remove extra spaces, whitespace remover, delete duplicate spaces, text space cleaner"},{"id":"find-and-replace","name":"Find and Replace Text","desc":"Search and replace words or patterns in text with case sensitivity and regex support.","cat":"text","catName":"Text Tools","url":"tools/text/find-and-replace.html","keywords":"find and replace, replace text online, word replacer, regex find and replace, batch text replace"},{"id":"reverse-text","name":"Reverse Text & Words","desc":"Reverse characters, flip words in sentences, or invert lines of text.","cat":"text","catName":"Text Tools","url":"tools/text/reverse-text.html","keywords":"reverse text, backwards text generator, flip words, invert text, reverse string online"},{"id":"text-to-binary","name":"Text to Binary & Binary to Text","desc":"Convert ASCII and Unicode text to 8-bit binary digits and binary code back to text.","cat":"text","catName":"Text Tools","url":"tools/text/text-to-binary.html","keywords":"text to binary, binary to text, english to binary, binary code translator, ascii to binary"},{"id":"number-to-words","name":"Number to Words Converter","desc":"Convert numbers and currency figures into English words in Western and Indian Lakh/Crore numbering.","cat":"text","catName":"Text Tools","url":"tools/text/number-to-words.html","keywords":"number to words, cheque words converter, convert numbers to words online, indian number to words"},{"id":"age-calculator","name":"Age Calculator","desc":"Calculate your exact age in years, months, days, hours, and next birthday countdown.","cat":"calculator","catName":"Calculators","url":"tools/calculator/age-calculator.html","keywords":"age calculator, calculate age online, date of birth calculator, how old am i, birthday countdown"},{"id":"gst-calculator","name":"GST Calculator","desc":"Calculate GST amounts (CGST, SGST, IGST) at 5%, 12%, 18%, 28% for inclusive or exclusive prices.","cat":"calculator","catName":"Calculators","url":"tools/calculator/gst-calculator.html","keywords":"gst calculator, calculate gst online, gst inclusive calculator, gst exclusive, cgst sgst calculator, indian gst"},{"id":"emi-calculator","name":"EMI Calculator","desc":"Calculate monthly loan EMI, total interest, and total repayment amount for home, car, or personal loans.","cat":"calculator","catName":"Calculators","url":"tools/calculator/emi-calculator.html","keywords":"emi calculator, loan emi calculator, home loan emi, car loan emi, monthly emi calculate"},{"id":"percentage-calculator","name":"Percentage Calculator","desc":"Solve all percentage problems: X% of Y, what % is X of Y, and percentage increase/decrease.","cat":"calculator","catName":"Calculators","url":"tools/calculator/percentage-calculator.html","keywords":"percentage calculator, calculate percentage, percent increase, percent decrease, percent difference"},{"id":"bmi-calculator","name":"BMI Health Calculator","desc":"Calculate Body Mass Index (BMI) and check healthy weight ranges in metric or imperial units.","cat":"calculator","catName":"Calculators","url":"tools/calculator/bmi-calculator.html","keywords":"bmi calculator, body mass index, healthy weight calculator, bmi chart, calculate bmi online"},{"id":"sip-calculator","name":"SIP Return Calculator","desc":"Calculate wealth growth and maturity returns from mutual fund Systematic Investment Plans (SIP).","cat":"calculator","catName":"Calculators","url":"tools/calculator/sip-calculator.html","keywords":"sip calculator, mutual fund sip, systematic investment plan, sip returns, investment calculator"},{"id":"discount-calculator","name":"Discount & Sale Calculator","desc":"Calculate sale discounts, final price, total savings, and double stacked discounts.","cat":"calculator","catName":"Calculators","url":"tools/calculator/discount-calculator.html","keywords":"discount calculator, sale price calculator, calculate discount, percent off calculator, shopping savings"},{"id":"date-difference-calculator","name":"Date Difference Calculator","desc":"Calculate the exact time difference between two calendar dates in days, weeks, and months.","cat":"calculator","catName":"Calculators","url":"tools/calculator/date-difference-calculator.html","keywords":"date difference calculator, days between dates, duration between two dates, date calculator online"},{"id":"simple-compound-interest-calculator","name":"Simple vs Compound Interest Calculator","desc":"Compare Simple Interest vs Compound Interest returns with customizable compounding frequency.","cat":"calculator","catName":"Calculators","url":"tools/calculator/simple-compound-interest-calculator.html","keywords":"compound interest calculator, simple interest, compare interest, interest formula, investment growth"},{"id":"profit-loss-calculator","name":"Profit and Loss Calculator","desc":"Calculate gross profit, net loss, profit margin percentage, and markup percentage on retail sales.","cat":"calculator","catName":"Calculators","url":"tools/calculator/profit-loss-calculator.html","keywords":"profit and loss calculator, profit margin, markup calculator, retail profit calculator"},{"id":"fuel-cost-calculator","name":"Fuel Cost Trip Calculator","desc":"Estimate travel fuel expenses based on trip distance, vehicle mileage, and fuel price per liter.","cat":"calculator","catName":"Calculators","url":"tools/calculator/fuel-cost-calculator.html","keywords":"fuel cost calculator, trip fuel expense, petrol mileage calculator, diesel cost calculator"},{"id":"tip-and-bill-splitter","name":"Tip & Bill Splitter Calculator","desc":"Split dining bills evenly among friends and calculate tip amounts per person.","cat":"calculator","catName":"Calculators","url":"tools/calculator/tip-and-bill-splitter.html","keywords":"bill splitter, tip calculator, split restaurant bill, split check online, tip percentage"},{"id":"length-converter","name":"Length & Distance Converter","desc":"Convert between Meters, Kilometers, Centimeters, Miles, Yards, Feet, and Inches.","cat":"converter","catName":"Converters","url":"tools/converter/length-converter.html","keywords":"length converter, distance converter, meters to feet, feet to meters, inches to cm, miles to km"},{"id":"weight-converter","name":"Weight & Mass Converter","desc":"Convert between Kilograms, Grams, Milligrams, Pounds, Ounces, and Metric Tons.","cat":"converter","catName":"Converters","url":"tools/converter/weight-converter.html","keywords":"weight converter, kg to lbs, pounds to kg, grams to ounces, mass converter online"},{"id":"temperature-converter","name":"Temperature Converter","desc":"Convert between Celsius (°C), Fahrenheit (°F), and Kelvin (K) with step-by-step formulas.","cat":"converter","catName":"Converters","url":"tools/converter/temperature-converter.html","keywords":"temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin converter"},{"id":"data-storage-converter","name":"Data Storage Converter","desc":"Convert between Bytes, KB, MB, GB, TB, and PB in Decimal (1000) or Binary (1024) bases.","cat":"converter","catName":"Converters","url":"tools/converter/data-storage-converter.html","keywords":"data storage converter, bytes to mb, mb to gb, gb to tb converter, data size calculator"},{"id":"unix-timestamp-converter","name":"Unix Timestamp Converter","desc":"Convert Epoch Unix timestamps to human-readable dates (UTC & Local) and vice versa.","cat":"converter","catName":"Converters","url":"tools/converter/unix-timestamp-converter.html","keywords":"unix timestamp converter, epoch converter, timestamp to date, epoch time to datetime"},{"id":"area-converter","name":"Area Land Unit Converter","desc":"Convert between Square Feet, Square Meters, Acres, Hectares, Bigha, and Guntha.","cat":"converter","catName":"Converters","url":"tools/converter/area-converter.html","keywords":"area converter, sq feet to sq meters, acres to hectares, bigha converter, land measurement calculator"},{"id":"speed-converter","name":"Speed Converter","desc":"Convert speeds between Kilometers per Hour (km/h), Miles per Hour (mph), Knots, and Mach.","cat":"converter","catName":"Converters","url":"tools/converter/speed-converter.html","keywords":"speed converter, kmh to mph, mph to kmh, knots to kmh, meters per second to kmh"},{"id":"number-system-converter","name":"Number System Converter (Binary, Hex, Dec)","desc":"Convert between Decimal, Binary, Hexadecimal, and Octal numeral systems with real-time updates.","cat":"converter","catName":"Converters","url":"tools/converter/number-system-converter.html","keywords":"number system converter, decimal to binary, binary to hex, hex to decimal, octal converter"},{"id":"roman-numeral-converter","name":"Roman Numeral Converter","desc":"Convert Roman numerals (I, V, X, L, C, D, M) to Arabic numbers and numbers to Roman numerals.","cat":"converter","catName":"Converters","url":"tools/converter/roman-numeral-converter.html","keywords":"roman numeral converter, roman to arabic, numbers to roman numerals, roman numerals chart"},{"id":"json-formatter","name":"JSON Formatter & Validator","desc":"Prettify, minify, validate, and inspect JSON with detailed syntax error detection.","cat":"developer","catName":"Developer Tools","url":"tools/developer/json-formatter.html","keywords":"json formatter, json validator, prettify json, minify json, format json online, json parser"},{"id":"base64-encoder-decoder","name":"Base64 Encoder & Decoder","desc":"Encode text strings to Base64 and decode Base64 back to clean UTF-8 text.","cat":"developer","catName":"Developer Tools","url":"tools/developer/base64-encoder-decoder.html","keywords":"base64 encode, base64 decode, base64 converter, text to base64, base64 to text"},{"id":"url-encoder-decoder","name":"URL Encoder & Decoder","desc":"Encode special characters into percent-encoded URI strings or decode query strings.","cat":"developer","catName":"Developer Tools","url":"tools/developer/url-encoder-decoder.html","keywords":"url encoder, url decoder, percent encoding, uri encode, decode url parameters"},{"id":"hash-generator","name":"Hash Generator (SHA-256, SHA-512, MD5)","desc":"Compute cryptographic hashes (SHA-256, SHA-512, SHA-384, SHA-1, MD5) using Web Crypto.","cat":"developer","catName":"Developer Tools","url":"tools/developer/hash-generator.html","keywords":"hash generator, sha256 generator, sha512 generator, md5 hash online, crypto hash tool"},{"id":"jwt-decoder","name":"JWT Decoder (JSON Web Token)","desc":"Decode JWT Header and Payload, format JSON claims, and inspect token expiration.","cat":"developer","catName":"Developer Tools","url":"tools/developer/jwt-decoder.html","keywords":"jwt decoder, decode jwt online, parse json web token, jwt inspector, jwt token reader"},{"id":"markdown-to-html","name":"Markdown to HTML Converter","desc":"Live Markdown editor with sanitized HTML preview and one-click HTML copy.","cat":"developer","catName":"Developer Tools","url":"tools/developer/markdown-to-html.html","keywords":"markdown to html, markdown editor online, md to html converter, live markdown preview"},{"id":"html-entity-encoder","name":"HTML Entity Encoder & Decoder","desc":"Encode special characters to HTML entities (&amp;, &lt;, &gt;) or decode HTML entities back to raw text.","cat":"developer","catName":"Developer Tools","url":"tools/developer/html-entity-encoder.html","keywords":"html entity encoder, decode html entities, html escape online, html special characters"},{"id":"css-formatter-minifier","name":"CSS Formatter & Minifier","desc":"Prettify messy CSS code or minify stylesheets to reduce page weight and load times.","cat":"developer","catName":"Developer Tools","url":"tools/developer/css-formatter-minifier.html","keywords":"css formatter, css minifier, beautify css, compress css online, clean css"},{"id":"regex-tester","name":"Regex Tester & Match Inspector","desc":"Test Regular Expressions in real-time with flags (g, i, m, s) and visual match highlights.","cat":"developer","catName":"Developer Tools","url":"tools/developer/regex-tester.html","keywords":"regex tester, test regular expressions online, regex matcher, javascript regex tester"},{"id":"color-code-converter","name":"Color Code Converter (HEX, RGB, HSL)","desc":"Convert colors between HEX, RGB, RGBA, and HSL formats with live color preview box.","cat":"developer","catName":"Developer Tools","url":"tools/developer/color-code-converter.html","keywords":"color code converter, hex to rgb, rgb to hex, hex to hsl, color palette tool"},{"id":"qr-code-generator","name":"QR Code Generator","desc":"Generate customizable QR codes for URLs, WiFi networks, text, and WhatsApp messages with PNG download.","cat":"generator","catName":"Generators","url":"tools/generator/qr-code-generator.html","keywords":"qr code generator, free qr code, create qr code online, wifi qr code, generate qr code png"},{"id":"password-generator","name":"Secure Password Generator","desc":"Generate strong, cryptographically secure random passwords and passphrases with entropy analysis.","cat":"generator","catName":"Generators","url":"tools/generator/password-generator.html","keywords":"password generator, secure password generator, random password, strong password, password creator online"},{"id":"uuid-generator","name":"UUID / GUID Generator","desc":"Generate cryptographically random UUID Version 4 identifiers in bulk.","cat":"generator","catName":"Generators","url":"tools/generator/uuid-generator.html","keywords":"uuid generator, guid generator, uuid v4, random uuid, generate uuid online"},{"id":"css-box-shadow-generator","name":"CSS Box Shadow Generator","desc":"Design modern soft drop shadows with live preview and clean CSS snippet export.","cat":"generator","catName":"Generators","url":"tools/generator/css-box-shadow-generator.html","keywords":"css box shadow generator, box shadow tool, css shadow preview, drop shadow generator"},{"id":"css-gradient-generator","name":"CSS Gradient Generator","desc":"Create gorgeous linear and radial CSS gradients with multi-color stops and CSS code export.","cat":"generator","catName":"Generators","url":"tools/generator/css-gradient-generator.html","keywords":"css gradient generator, linear gradient, radial gradient, background gradient tool, css gradient copy"},{"id":"barcode-generator","name":"Barcode Generator (CODE128)","desc":"Generate printable CODE128 and standard retail barcodes with high-resolution PNG download.","cat":"generator","catName":"Generators","url":"tools/generator/barcode-generator.html","keywords":"barcode generator, code128 generator, make barcode online, printable barcode, free barcode maker"},{"id":"css-border-radius-generator","name":"CSS Border Radius Generator","desc":"Design custom rounded corners and organic blob shapes with an interactive 8-point border radius builder.","cat":"generator","catName":"Generators","url":"tools/generator/css-border-radius-generator.html","keywords":"border radius generator, css rounded corners, border radius blob, 8 point border radius"},{"id":"meta-tag-generator","name":"SEO Meta Tag Generator","desc":"Generate complete HTML SEO meta tags (title, description, canonical, robots, viewport) for higher rankings.","cat":"generator","catName":"Generators","url":"tools/generator/meta-tag-generator.html","keywords":"meta tag generator, seo meta tags, html meta tags creator, open graph tags, website meta generator"},{"id":"color-contrast-checker","name":"Color Contrast Checker (WCAG 2.1)","desc":"Test color contrast ratio between text and background for WCAG 2.1 AA and AAA accessibility compliance.","cat":"generator","catName":"Generators","url":"tools/generator/color-contrast-checker.html","keywords":"color contrast checker, wcag contrast ratio, accessible color checker, web accessibility color tool"},{"id":"zip-file-creator","name":"ZIP File Creator","desc":"Bundle multiple files into a single compressed ZIP archive directly in your browser.","cat":"utility","catName":"File & Utilities","url":"tools/utility/zip-file-creator.html","keywords":"create zip online, zip file creator, zip archive maker, compress files to zip, browser zip"},{"id":"zip-extractor","name":"ZIP File Extractor","desc":"Open, inspect, and extract files from ZIP archives directly in your browser without software installation.","cat":"utility","catName":"File & Utilities","url":"tools/utility/zip-extractor.html","keywords":"zip extractor, unzip files online, open zip file, uncompress zip online, view zip contents"},{"id":"file-checksum-calculator","name":"File Checksum Calculator (SHA-256 / MD5)","desc":"Compute cryptographic SHA-256, SHA-512, and SHA-1 checksum hashes of any local file.","cat":"utility","catName":"File & Utilities","url":"tools/utility/file-checksum-calculator.html","keywords":"file checksum, sha256 checksum, file hash calculator, verify file integrity, checksum online"},{"id":"csv-viewer-filter","name":"CSV Spreadsheet Viewer & Filter","desc":"Open, search, filter, and view large CSV spreadsheet files in your browser.","cat":"utility","catName":"File & Utilities","url":"tools/utility/csv-viewer-filter.html","keywords":"csv viewer, csv filter, read csv online, view csv table, csv spreadsheet viewer"},{"id":"text-file-merger","name":"Text & Log File Merger","desc":"Merge multiple plain text, log (.log), or CSV files into one combined file.","cat":"utility","catName":"File & Utilities","url":"tools/utility/text-file-merger.html","keywords":"merge text files, combine txt files, merge log files online, concatenate text files"},{"id":"aspect-ratio-calculator","name":"Aspect Ratio Calculator","desc":"Calculate dimensions for 16:9, 4:3, 21:9, 1:1, or custom aspect ratios for video and photos.","cat":"utility","catName":"File & Utilities","url":"tools/utility/aspect-ratio-calculator.html","keywords":"aspect ratio calculator, 16 9 calculator, image aspect ratio, resize proportion, screen aspect ratio"},{"id":"screen-resolution-checker","name":"Screen Resolution & Display Checker","desc":"Inspect screen resolution, browser viewport size, device pixel ratio (DPR), and color depth.","cat":"utility","catName":"File & Utilities","url":"tools/utility/screen-resolution-checker.html","keywords":"screen resolution checker, check screen size, viewport dimensions, device pixel ratio, monitor resolution"},{"id":"pdf-to-text","name":"PDF to Text Extractor","desc":"Extract raw text content from any PDF document directly in your browser.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/pdf-to-text.html","keywords":"pdf to text, extract text from pdf, convert pdf to txt, read pdf text"},{"id":"remove-pdf-pages","name":"Remove PDF Pages","desc":"Delete unwanted or blank pages from any PDF document.","cat":"pdf","catName":"PDF Tools","url":"tools/pdf/remove-pdf-pages.html","keywords":"remove pdf pages, delete pages from pdf, cut pdf pages, pdf page remover"},{"id":"image-pixelator","name":"Image Pixelator & Censor","desc":"Censor sensitive photos or create 8-bit retro pixel art with adjustable block sizes.","cat":"image","catName":"Image Tools","url":"tools/image/image-pixelator.html","keywords":"pixelate image, censor photo online, blur face, 8 bit pixel art, photo pixelator"},{"id":"image-dimension-checker","name":"Image Dimension & DPI Checker","desc":"Inspect image pixel dimensions, megapixels, aspect ratio, and file size in detail.","cat":"image","catName":"Image Tools","url":"tools/image/image-dimension-checker.html","keywords":"image dimension checker, check image resolution, photo megapixels, aspect ratio inspector"},{"id":"text-repeater","name":"Text Repeater Online","desc":"Repeat any text, message, or emoji string up to 1,000 times with custom separators.","cat":"text","catName":"Text Tools","url":"tools/text/text-repeater.html","keywords":"text repeater, repeat text online, repeat message 100 times, text multiplier, duplicate text generator"},{"id":"extract-emails-urls","name":"Email & URL Extractor","desc":"Extract all email addresses and website URLs from raw unstructured text.","cat":"text","catName":"Text Tools","url":"tools/text/extract-emails-urls.html","keywords":"email extractor, extract urls from text, find email addresses, link extractor online"},{"id":"average-calculator","name":"Average & Statistics Calculator","desc":"Calculate Mean (Average), Median, Mode, Range, and Sum from a list of numbers.","cat":"calculator","catName":"Calculators","url":"tools/calculator/average-calculator.html","keywords":"average calculator, calculate mean, median calculator, mode calculator, stats calculator"},{"id":"ratio-calculator","name":"Ratio Simplifier & Solver","desc":"Simplify ratios (A:B) to lowest terms or solve for the missing proportion (A:B = C:X).","cat":"calculator","catName":"Calculators","url":"tools/calculator/ratio-calculator.html","keywords":"ratio calculator, simplify ratio, solve ratio, proportion calculator, aspect ratio solver"},{"id":"url-parser","name":"URL Parser & Query String Inspector","desc":"Deconstruct web URLs into protocol, host, pathname, hash, and interactive query parameters table.","cat":"developer","catName":"Developer Tools","url":"tools/developer/url-parser.html","keywords":"url parser, query string parser, deconstruct url, url component analyzer"},{"id":"user-agent-parser","name":"User Agent Parser & Device Inspector","desc":"Analyze your browser User-Agent header, operating system, layout engine, and client specs.","cat":"developer","catName":"Developer Tools","url":"tools/developer/user-agent-parser.html","keywords":"user agent parser, what is my user agent, browser detector, os detector, user agent string"},{"id":"placeholder-image-generator","name":"Placeholder Image Generator","desc":"Generate custom placeholder dummy images with width, height, colors, and text with instant download.","cat":"generator","catName":"Generators","url":"tools/generator/placeholder-image-generator.html","keywords":"placeholder image generator, dummy image maker, mock image generator, placeholder png"},{"id":"mime-type-lookup","name":"MIME Type Lookup Directory","desc":"Search over 200 file extensions and their exact Content-Type MIME headers and descriptions.","cat":"utility","catName":"File & Utilities","url":"tools/utility/mime-type-lookup.html","keywords":"mime type lookup, content-type header, file extension to mime, mime type list"},{"id":"html-formatter-beautifier","name":"HTML Formatter & Beautifier","desc":"Format, indent, and beautify messy or minified HTML markup code.","cat":"developer","catName":"Developer Tools","url":"tools/developer/html-formatter-beautifier.html","keywords":"html formatter, beautify html, format html code, clean html online"},{"id":"javascript-minifier","name":"JavaScript Minifier & Cleaner","desc":"Minify JavaScript code, strip comments, and clean whitespace safely client-side.","cat":"developer","catName":"Developer Tools","url":"tools/developer/javascript-minifier.html","keywords":"javascript minifier, minify js online, compress javascript, js cleaner"},{"id":"sql-formatter","name":"SQL Query Formatter","desc":"Prettify and format SQL queries with capitalized keywords and structured indentation.","cat":"developer","catName":"Developer Tools","url":"tools/developer/sql-formatter.html","keywords":"sql formatter, prettify sql, format sql query online, sql beautifier"},{"id":"volume-converter","name":"Volume & Capacity Converter","desc":"Convert between Liters, Milliliters, Gallons (US/UK), Cubic Meters, Cups, and Fluid Ounces.","cat":"converter","catName":"Converters","url":"tools/converter/volume-converter.html","keywords":"volume converter, liters to gallons, gallons to liters, ml to oz, capacity converter"},{"id":"time-unit-converter","name":"Time Unit Converter","desc":"Convert between Seconds, Minutes, Hours, Days, Weeks, Months, and Years.","cat":"converter","catName":"Converters","url":"tools/converter/time-unit-converter.html","keywords":"time unit converter, seconds to hours, minutes to hours, hours to days, days to weeks"},{"id":"angle-converter","name":"Angle Converter (Degrees & Radians)","desc":"Convert between Degrees (°), Radians (rad), Gradians (grad), and Arcminutes.","cat":"converter","catName":"Converters","url":"tools/converter/angle-converter.html","keywords":"angle converter, degrees to radians, radians to degrees, gradians converter"},{"id":"robots-txt-generator","name":"Robots.txt Generator","desc":"Generate search engine crawler rules, allow/disallow paths, and sitemap directives for robots.txt.","cat":"generator","catName":"Generators","url":"tools/generator/robots-txt-generator.html","keywords":"robots txt generator, create robots.txt, robots file generator, seo robots tool"},{"id":"utm-link-builder","name":"UTM Campaign Link Builder","desc":"Build trackable Google Analytics campaign URLs with UTM parameters (source, medium, campaign).","cat":"generator","catName":"Generators","url":"tools/generator/utm-link-builder.html","keywords":"utm builder, utm link generator, campaign url builder, google analytics utm tool"}];
+  const searchBtn = document.getElementById('openSearchBtn');
+  const searchModal = document.getElementById('searchModal');
+  const closeSearchBtn = document.getElementById('closeSearchBtn');
+  const searchInput = document.getElementById('searchModalInput');
+  const searchResults = document.getElementById('searchModalResults');
+  const mobileOpen = document.getElementById('mobileMenuOpen');
+  const mobileClose = document.getElementById('mobileMenuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (mobileOpen && mobileMenu) {
+    mobileOpen.addEventListener('click', () => mobileMenu.classList.add('open'));
+  }
+  if (mobileClose && mobileMenu) {
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  }
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) mobileMenu.classList.remove('open');
+    });
+  }
+
+  function openSearch() {
+    if (!searchModal) return;
+    searchModal.classList.add('open');
+    setTimeout(() => {
+      if (searchInput) {
+        searchInput.focus();
+        renderResults(searchInput.value.trim());
+      }
+    }, 50);
+  }
+
+  function closeSearch() {
+    if (!searchModal) return;
+    searchModal.classList.remove('open');
+  }
+
+  if (searchBtn) searchBtn.addEventListener('click', openSearch);
+  if (closeSearchBtn) closeSearchBtn.addEventListener('click', closeSearch);
+  if (searchModal) {
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) closeSearch();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      if (searchModal && searchModal.classList.contains('open')) closeSearch();
+      else openSearch();
+    } else if (e.key === 'Escape') {
+      closeSearch();
+      if (mobileMenu) mobileMenu.classList.remove('open');
+    }
+  });
+
+  function renderResults(q) {
+    if (!searchResults) return;
+    const query = q.toLowerCase();
+    const filtered = tools.filter(t => 
+      t.name.toLowerCase().includes(query) || 
+      t.desc.toLowerCase().includes(query) || 
+      (t.keywords && t.keywords.toLowerCase().includes(query)) ||
+      t.cat.toLowerCase().includes(query)
+    ).slice(0, 10);
+
+    if (filtered.length === 0) {
+      searchResults.innerHTML = '<div style="padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">No tools found matching "' + q.replace(/</g, '&lt;') + '". Try another keyword.</div>';
+      return;
+    }
+
+    searchResults.innerHTML = filtered.map(t => `
+      <a href="${'../../' + t.url}" class="search-result-item" onclick="saveRecent('${t.id}')">
+        <div class="search-result-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div class="search-result-title">${t.name}</div>
+          <div class="search-result-cat">${t.catName} • ${t.desc}</div>
+        </div>
+        <span style="font-size:0.8rem;color:var(--primary);font-weight:600;">Open &rarr;</span>
+      </a>
+    `).join('');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => renderResults(e.target.value.trim()));
+  }
+
+  window.saveRecent = function(toolId) {
+    try {
+      let recents = JSON.parse(localStorage.getItem('desidesk_recents') || '[]');
+      recents = recents.filter(id => id !== toolId);
+      recents.unshift(toolId);
+      if (recents.length > 8) recents.pop();
+      localStorage.setItem('desidesk_recents', JSON.stringify(recents));
+    } catch(e) {}
+  };
+})();
+
+
+
+      const fuelDistance = document.getElementById('fuelDistance');
+      const fuelMileage = document.getElementById('fuelMileage');
+      const fuelPrice = document.getElementById('fuelPrice');
+      const resFuelCost = document.getElementById('resFuelCost');
+      const resFuelLiters = document.getElementById('resFuelLiters');
+
+      function calculateFuel() {
+        const d = parseFloat(fuelDistance.value) || 0;
+        const m = parseFloat(fuelMileage.value) || 0;
+        const p = parseFloat(fuelPrice.value) || 0;
+
+        if (d <= 0 || m <= 0 || p <= 0) return;
+
+        const liters = d / m;
+        const cost = liters * p;
+        const costPerKm = cost / d;
+
+        resFuelCost.textContent = '₹' + Math.round(cost).toLocaleString('en-IN');
+        resFuelLiters.textContent = `Fuel Needed: ${liters.toFixed(1)} Liters (₹${costPerKm.toFixed(2)} per km)`;
+      }
+
+      [fuelDistance, fuelMileage, fuelPrice].forEach(el => el.addEventListener('input', calculateFuel));
+      calculateFuel();
+    
+</script>
+</body>
+</html>

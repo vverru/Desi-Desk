@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="10" fill="url(#brandGrad)" />
+  <!-- Modern Desk / Productivity Icon -->
+  <rect x="8" y="15" width="32" height="22" rx="3" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M28 37V11a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v26" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="34" cy="22" r="1.75" fill="#10b981" />
+</svg>
