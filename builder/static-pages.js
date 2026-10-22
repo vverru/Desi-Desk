@@ -57,6 +57,9 @@ function getIndexHtml(tools) {
   <style>
 ${css}
   </style>
+  <script>
+    (function(){try{var t=localStorage.getItem('desidesk_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  </script>
 </head>
 <body>
 ${getHeaderHtml('', 'home')}
@@ -65,11 +68,11 @@ ${getHeaderHtml('', 'home')}
   <section class="hero container">
     <div class="hero-badge">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <span>100% Client-Side • Your Files Never Leave Your Device</span>
+      <span>100% Client-Side Privacy • Zero Server Uploads</span>
     </div>
-    <h1 class="hero-title">Your Everyday Tools. All in One Place.</h1>
+    <h1 class="hero-title">Your Everyday Online Tools. <span class="hero-gradient">Fast, Free &amp; 100% Private.</span></h1>
     <p class="hero-subtitle">
-      Compress images, manage PDFs, convert units, calculate finances and simplify everyday tasks with fast, easy-to-use online tools running securely in your browser.
+      Compress photos, merge &amp; split PDFs, calculate EMI &amp; GST, generate QR codes, format JSON and convert units — running directly in your browser with bank-grade privacy.
     </p>
 
     <div class="search-container">
@@ -378,6 +381,9 @@ function getCategoryPageHtml(cat, allTools) {
   <style>
 ${css}
   </style>
+  <script>
+    (function(){try{var t=localStorage.getItem('desidesk_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  </script>
 </head>
 <body>
 ${getHeaderHtml('../', cat.id)}
@@ -486,9 +492,65 @@ function getToolPageHtml(tool, allTools) {
     keywords: t.keywords
   })));
 
-  const externalLibsHtml = (tool.libs || [])
-    .map(src => `<script src="${src}"></script>`)
-    .join('\n');
+function buildLibraryTags(tool) {
+  let tags = [];
+  if (tool.category === 'pdf') {
+    tags.push(`  <script src="../../assets/vendor/pdf-lib.min.js"></script>
+  <script>
+    if (typeof PDFLib === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"><\\\\/script>');
+    }
+  </script>
+  <script>
+    if (typeof PDFLib === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"><\\\\/script>');
+    }
+  </script>
+  <script>
+    if (typeof PDFLib === 'undefined') {
+      document.write('<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"><\\\\/script>');
+    }
+  </script>`);
+  } else if (tool.id === 'qr-code-generator') {
+    tags.push(`  <script src="../../assets/vendor/qrcode.min.js"></script>
+  <script>
+    if (typeof QRCode === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"><\\\\/script>');
+    }
+  </script>
+  <script>
+    if (typeof QRCode === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"><\\\\/script>');
+    }
+  </script>`);
+  } else if (tool.id === 'barcode-generator') {
+    tags.push(`  <script src="../../assets/vendor/jsbarcode.min.js"></script>
+  <script>
+    if (typeof JsBarcode === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"><\\\\/script>');
+    }
+  </script>`);
+  } else if (tool.id === 'zip-file-creator' || tool.id === 'zip-extractor') {
+    tags.push(`  <script src="../../assets/vendor/jszip.min.js"></script>
+  <script>
+    if (typeof JSZip === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"><\\\\/script>');
+    }
+  </script>`);
+  }
+
+  if (tool.libs && tool.libs.length) {
+    tool.libs.forEach(src => {
+      if (!src.includes('pdf-lib') && !src.includes('qrcode') && !src.includes('jsbarcode') && !src.includes('jszip')) {
+        tags.push(`  <script src="${src}"></script>`);
+      }
+    });
+  }
+
+  return tags.join('\n');
+}
+
+  const externalLibsHtml = buildLibraryTags(tool);
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -516,6 +578,9 @@ function getToolPageHtml(tool, allTools) {
   <style>
 ${css}
   </style>
+  <script>
+    (function(){try{var t=localStorage.getItem('desidesk_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  </script>
   ${externalLibsHtml}
 </head>
 <body>
@@ -825,6 +890,9 @@ function getStaticPageHtml(pageType, tools) {
   <style>
 ${css}
   </style>
+  <script>
+    (function(){try{var t=localStorage.getItem('desidesk_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  </script>
 </head>
 <body>
 ${getHeaderHtml('', pageType)}

@@ -10,7 +10,7 @@ module.exports = [
     seoTitle: 'Merge PDF Online - Combine Multiple PDF Files Free | DesiDesk',
     seoDesc: 'Combine multiple PDF files into one document directly in your browser. 100% private, fast, and free client-side PDF merger with DesiDesk.',
     keywords: 'merge pdf, combine pdf files, join pdf, free pdf merger, merge pdf online',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Click or drag and drop two or more PDF files into the upload zone.',
       'Review the uploaded files list, drag or move up/down to set the desired order.',
@@ -203,7 +203,7 @@ module.exports = [
     seoTitle: 'Split PDF Online - Extract Pages Free & Fast | DesiDesk',
     seoDesc: 'Split PDF files and extract custom page ranges directly in your browser. 100% private, no signup, no file upload to external servers.',
     keywords: 'split pdf, extract pdf pages, separate pdf, split pdf online, divide pdf',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload the PDF document you want to split.',
       'Specify the page range (e.g., "1-3, 5, 8-10") or choose to extract all pages.',
@@ -371,7 +371,7 @@ module.exports = [
     seoTitle: 'Rotate PDF Online - Rotate PDF Pages Free | DesiDesk',
     seoDesc: 'Rotate PDF pages permanently 90 degrees, 180 degrees or 270 degrees in your browser. Fast, free, secure client-side PDF rotator.',
     keywords: 'rotate pdf, rotate pdf pages, turn pdf, flip pdf pages, free pdf rotate',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload the PDF document with misoriented pages.',
       'Select rotation angle (90° Clockwise, 180° Upside Down, or 270° Counter-Clockwise).',
@@ -498,7 +498,7 @@ module.exports = [
     seoTitle: 'JPG to PDF Online - Convert Images to PDF Free | DesiDesk',
     seoDesc: 'Convert JPG, PNG, WebP images to a professional PDF document right in your browser. Fast, free and 100% private image to PDF conversion.',
     keywords: 'jpg to pdf, convert image to pdf, png to pdf, photo to pdf, free jpg to pdf',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Select or drop JPG, PNG, or WebP images into the upload area.',
       'Reorder images or adjust page margin and orientation settings.',
@@ -695,7 +695,7 @@ module.exports = [
     seoTitle: 'Add Page Numbers to PDF Online - Free & Private | DesiDesk',
     seoDesc: 'Insert page numbers into PDF documents easily in your browser. Choose position, font size, and format like Page X of Y.',
     keywords: 'add page numbers to pdf, number pdf pages, paginate pdf, free pdf numbering',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload your PDF file.',
       'Select page numbering position (Bottom Right, Bottom Center, Top Right).',
@@ -855,7 +855,7 @@ module.exports = [
     seoTitle: 'Watermark PDF Online - Add Text Watermark Free | DesiDesk',
     seoDesc: 'Stamp customized text watermarks onto PDF pages with configurable opacity, color, and angle directly in your browser. 100% private.',
     keywords: 'watermark pdf, stamp pdf, add watermark to pdf, protect pdf document, pdf watermark online',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload your PDF file.',
       'Enter the watermark text (e.g. "CONFIDENTIAL", "DRAFT", or your company name).',
@@ -995,7 +995,7 @@ module.exports = [
     seoTitle: 'PDF Page Counter Online - Count Pages & Inspect PDF Free | DesiDesk',
     seoDesc: 'Quickly count PDF pages and inspect page dimensions, aspect ratio, orientation, and file size in your browser without uploading.',
     keywords: 'pdf page counter, count pages in pdf, check pdf pages, pdf info viewer',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Select or drop any PDF document.',
       'View instant breakdown of total pages, orientation (Portrait/Landscape), and page dimensions.',
@@ -1108,7 +1108,7 @@ module.exports = [
     seoTitle: 'PDF Metadata Viewer & Editor Online - Free | DesiDesk',
     seoDesc: 'Inspect and modify Title, Author, Subject, and Creator PDF metadata directly in your browser. 100% private and secure.',
     keywords: 'pdf metadata viewer, edit pdf metadata, change pdf author, remove pdf metadata, view pdf properties',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload any PDF file to view its embedded metadata.',
       'Inspect or modify the Title, Author, Subject, Keywords, or Producer fields.',
@@ -1247,7 +1247,7 @@ module.exports = [
     seoTitle: 'Text to PDF Online - Convert Plain Text to PDF Free | DesiDesk',
     seoDesc: 'Convert plain text, notes, and articles into formatted PDF documents in your browser. Fast, free, completely client-side with DesiDesk.',
     keywords: 'text to pdf, convert txt to pdf, notes to pdf, create pdf from text',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Type or paste your text into the editor.',
       'Set your document title, font size, and line spacing.',

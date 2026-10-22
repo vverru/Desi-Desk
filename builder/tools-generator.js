@@ -1,96 +1,390 @@
 // builder/tools-generator.js
+const fs = require('fs');
+const path = require('path');
+const qrcodeVendor = fs.readFileSync(path.join(__dirname, '../assets/vendor/qrcode.min.js'), 'utf8');
 
 module.exports = [
   {
     id: 'qr-code-generator',
     slug: 'qr-code-generator',
     category: 'generator',
-    name: 'QR Code Generator',
-    shortDesc: 'Generate customizable QR codes for URLs, WiFi networks, text, and WhatsApp messages with PNG download.',
-    seoTitle: 'QR Code Generator Online - Free Custom QR Codes | DesiDesk',
-    seoDesc: 'Create free high-resolution QR codes for websites, plain text, and WiFi passwords. Download PNG image instantly on DesiDesk.',
-    keywords: 'qr code generator, free qr code, create qr code online, wifi qr code, generate qr code png',
-    libs: ['https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js'],
+    name: 'QR Code Generator (UPI, WiFi & URLs)',
+    shortDesc: 'Generate high-resolution custom QR codes for Website URLs, UPI Payments (GPay/PhonePe/Paytm), WiFi networks, and WhatsApp.',
+    seoTitle: 'QR Code Generator Online - Free UPI, WiFi & URL QR Codes | DesiDesk',
+    seoDesc: 'Create free high-resolution QR codes for websites, UPI payments, plain text, and WiFi passwords. 100% private and client-side on DesiDesk.',
+    keywords: 'qr code generator, upi qr code generator, wifi qr code, create qr code online, free qr code png, whatsapp qr code',
+    libs: [],
     howToSteps: [
-      'Enter your website URL, text message, or WiFi network details.',
-      'Adjust foreground color, background color, and QR size.',
-      'Download your high-resolution QR code as a PNG image.'
+      'Select QR Code type: Website URL, UPI Payment, WiFi Network, WhatsApp, or Plain Text.',
+      'Fill in the details (e.g. UPI ID and Name, or WiFi SSID and Password).',
+      'Customize colors, error correction, and output resolution.',
+      'Instantly download high-resolution PNG or copy the QR code.'
     ],
     features: [
-      'Supports URLs, Plain Text, WiFi credentials, and phone numbers.',
-      'Custom color pickers for foreground and background.',
-      'High-resolution PNG download.',
-      '100% private: no tracking or external redirection.'
+      'Dedicated support for Indian UPI Payments (PhonePe, Google Pay, Paytm, BHIM).',
+      'One-tap WiFi QR Code: Guests scan to connect automatically.',
+      'WhatsApp Direct Chat QR Code with pre-filled message.',
+      'Custom color pickers and 6 designer palette presets.',
+      'Up to 1024×1024 Ultra-HD resolution for crisp poster printing.',
+      '100% Client-Side: Works completely offline, zero external tracking.'
     ],
     faqs: [
       {
         q: 'Do these QR codes expire?',
-        a: 'No! These are standard static QR codes. They never expire and encode the data directly without any third-party redirects.'
+        a: 'No! These are standard static QR codes. They never expire and encode the data directly without any third-party redirects or subscriptions.'
+      },
+      {
+        q: 'How does the UPI QR code work?',
+        a: 'It encodes the standard NPCI UPI specification (upi://pay?...). When scanned with Google Pay, PhonePe, Paytm, or BHIM, it automatically opens the payment screen with your UPI ID and payee name.'
+      },
+      {
+        q: 'How does the WiFi QR code work?',
+        a: 'Modern iOS and Android cameras read the WiFi credentials and show a "Join Network" prompt. Users can connect to your WiFi without typing complex passwords.'
       }
     ],
     related: ['barcode-generator', 'password-generator', 'uuid-generator'],
     toolHtml: `
-      <div class="form-group">
-        <label class="form-label">Data Content (URL, Text, or Phone):</label>
-        <input type="text" id="qrText" class="form-input" value="https://desidesk.in/" placeholder="https://yourwebsite.com or any text" />
+      <!-- Type Switcher Pills -->
+      <div class="qr-type-pills" id="qrTypePills">
+        <button type="button" class="qr-type-pill active" data-type="url">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website URL
+        </button>
+        <button type="button" class="qr-type-pill" data-type="upi">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          UPI Payment (GPay / PhonePe)
+        </button>
+        <button type="button" class="qr-type-pill" data-type="wifi">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          WiFi Network
+        </button>
+        <button type="button" class="qr-type-pill" data-type="wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp Chat
+        </button>
+        <button type="button" class="qr-type-pill" data-type="text">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Plain Text
+        </button>
       </div>
 
-      <div class="form-grid-3">
+      <!-- Type Input Panels -->
+      <div id="panelUrl" class="qr-panel">
         <div class="form-group">
-          <label class="form-label">Foreground Color:</label>
-          <input type="color" id="qrDark" class="form-input" value="#0f172a" style="height:42px;padding:2px;" />
+          <label class="form-label">Website URL:</label>
+          <input type="url" id="qrInputUrl" class="form-input" value="https://desidesk.in/" placeholder="https://example.com" />
+        </div>
+      </div>
+
+      <div id="panelUpi" class="qr-panel" style="display:none;">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">UPI ID / VPA (Required):</label>
+            <input type="text" id="upiId" class="form-input" placeholder="e.g. mohan@okhdfcbank or 9876543210@paytm" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Payee Name:</label>
+            <input type="text" id="upiName" class="form-input" placeholder="e.g. Mohan Store" />
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Amount in ₹ (Optional):</label>
+            <input type="number" id="upiAmount" class="form-input" placeholder="e.g. 500 (Leave blank for open amount)" min="0" step="1" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Transaction Note (Optional):</label>
+            <input type="text" id="upiNote" class="form-input" placeholder="e.g. Payment for Services" />
+          </div>
+        </div>
+      </div>
+
+      <div id="panelWifi" class="qr-panel" style="display:none;">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Network Name (SSID):</label>
+            <input type="text" id="wifiSsid" class="form-input" placeholder="e.g. Home_WiFi_5G" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">WiFi Password:</label>
+            <input type="text" id="wifiPass" class="form-input" placeholder="WiFi Password" />
+          </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Background Color:</label>
-          <input type="color" id="qrLight" class="form-input" value="#ffffff" style="height:42px;padding:2px;" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Size (px):</label>
-          <select id="qrSize" class="form-select">
-            <option value="256">256 x 256 (Standard)</option>
-            <option value="384">384 x 384 (High Res)</option>
-            <option value="512">512 x 512 (Print / Poster)</option>
+          <label class="form-label">Security Protocol:</label>
+          <select id="wifiType" class="form-select">
+            <option value="WPA" selected>WPA / WPA2 / WPA3 (Standard)</option>
+            <option value="WEP">WEP (Legacy)</option>
+            <option value="nopass">Open Network (No Password)</option>
           </select>
         </div>
       </div>
 
-      <div class="canvas-wrapper" style="margin:2rem 0;">
-        <canvas id="qrCanvas"></canvas>
+      <div id="panelWa" class="qr-panel" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">WhatsApp Mobile Number (with Country Code):</label>
+          <input type="text" id="waPhone" class="form-input" placeholder="e.g. 919876543210 (without + or spaces)" />
+          <span class="form-hint">Format: 91 followed by 10-digit number for India.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pre-filled Message (Optional):</label>
+          <textarea id="waMsg" class="form-textarea" placeholder="Hello! I am contacting you from your QR code..."></textarea>
+        </div>
+      </div>
+
+      <div id="panelText" class="qr-panel" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">Text Content:</label>
+          <textarea id="qrInputText" class="form-textarea" placeholder="Type or paste any text or note here..."></textarea>
+        </div>
+      </div>
+
+      <!-- Styling & Customization -->
+      <div style="background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:1.35rem;margin:1.75rem 0;">
+        <div style="font-size:0.95rem;font-weight:700;color:var(--secondary);margin-bottom:1rem;">🎨 Design & Customization</div>
+        <div class="form-grid-3">
+          <div class="form-group" style="margin-bottom:0.5rem;">
+            <label class="form-label">Foreground Color:</label>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <input type="color" id="qrDark" value="#0f172a" style="width:48px;height:40px;padding:2px;border-radius:var(--radius-sm);border:1px solid var(--border-light);cursor:pointer;" />
+              <span id="darkHex" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);">#0f172a</span>
+            </div>
+            <div class="qr-swatches">
+              <div class="qr-swatch" style="background:#0f172a;" data-color="#0f172a" title="Dark Slate"></div>
+              <div class="qr-swatch" style="background:#4338ca;" data-color="#4338ca" title="Royal Indigo"></div>
+              <div class="qr-swatch" style="background:#047857;" data-color="#047857" title="Emerald"></div>
+              <div class="qr-swatch" style="background:#be123c;" data-color="#be123c" title="Crimson"></div>
+              <div class="qr-swatch" style="background:#6d28d9;" data-color="#6d28d9" title="Purple"></div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0.5rem;">
+            <label class="form-label">Background Color:</label>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <input type="color" id="qrLight" value="#ffffff" style="width:48px;height:40px;padding:2px;border-radius:var(--radius-sm);border:1px solid var(--border-light);cursor:pointer;" />
+              <span id="lightHex" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);">#ffffff</span>
+            </div>
+            <div class="qr-swatches">
+              <div class="qr-swatch" style="background:#ffffff;" data-bg="#ffffff" title="Pure White"></div>
+              <div class="qr-swatch" style="background:#f8fafc;" data-bg="#f8fafc" title="Light Slate"></div>
+              <div class="qr-swatch" style="background:#fefce8;" data-bg="#fefce8" title="Soft Cream"></div>
+              <div class="qr-swatch" style="background:#ecfdf5;" data-bg="#ecfdf5" title="Mint"></div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0.5rem;">
+            <label class="form-label">QR Size (Resolution):</label>
+            <select id="qrSize" class="form-select">
+              <option value="256">256 × 256 px (Standard)</option>
+              <option value="384" selected>384 × 384 px (High Quality)</option>
+              <option value="512">512 × 512 px (HD)</option>
+              <option value="1024">1024 × 1024 px (Ultra-HD Print)</option>
+            </select>
+            <div style="margin-top:0.65rem;">
+              <label class="form-label" style="font-size:0.8rem;margin-bottom:0.25rem;">Error Correction Level:</label>
+              <select id="qrEc" class="form-select" style="padding:0.4rem 0.65rem;font-size:0.85rem;">
+                <option value="M" selected>Medium (15%) - Recommended</option>
+                <option value="L">Low (7%) - Highest Density</option>
+                <option value="Q">Quartile (25%) - Better Durability</option>
+                <option value="H">High (30%) - Best for Scanning</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Preview Box -->
+      <div style="text-align:center;margin:2rem 0;">
+        <div style="display:inline-block;padding:1.5rem;background:var(--bg-card);border:2px solid var(--border-light);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);">
+          <canvas id="qrCanvas" style="max-width:100%;height:auto;display:block;border-radius:var(--radius-sm);"></canvas>
+          <div id="qrDataInfo" style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-muted);font-family:var(--font-mono);"></div>
+        </div>
       </div>
 
       <div class="btn-group" style="justify-content:center;">
-        <a id="downloadQrBtn" class="btn btn-success" download="qrcode-desidesk.png">Download QR Code (PNG)</a>
+        <a id="downloadQrBtn" class="btn btn-success" download="qrcode-desidesk.png">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download QR Code (PNG)
+        </a>
+        <button id="copyQrBtn" class="btn btn-primary" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Image
+        </button>
+        <button id="printQrBtn" class="btn btn-outline" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print QR
+        </button>
       </div>
     `,
     toolScript: `
-      const qrText = document.getElementById('qrText');
-      const qrDark = document.getElementById('qrDark');
-      const qrLight = document.getElementById('qrLight');
-      const qrSize = document.getElementById('qrSize');
-      const qrCanvas = document.getElementById('qrCanvas');
-      const downloadQrBtn = document.getElementById('downloadQrBtn');
+      // Inlined Pure Client-Side QR Engine
+      ${qrcodeVendor}
 
-      function makeQr() {
-        const text = qrText.value.trim() || 'https://desidesk.in/';
-        const size = parseInt(qrSize.value, 10);
-        const dark = qrDark.value;
-        const light = qrLight.value;
+      (function() {
+        let activeType = 'url';
+        const typePills = document.querySelectorAll('#qrTypePills .qr-type-pill');
+        const panels = {
+          url: document.getElementById('panelUrl'),
+          upi: document.getElementById('panelUpi'),
+          wifi: document.getElementById('panelWifi'),
+          wa: document.getElementById('panelWa'),
+          text: document.getElementById('panelText')
+        };
 
-        if (typeof QRCode !== 'undefined') {
-          QRCode.toCanvas(qrCanvas, text, {
-            width: size,
-            margin: 2,
-            color: { dark, light }
-          }, function(error) {
-            if (!error) {
-              downloadQrBtn.href = qrCanvas.toDataURL('image/png');
+        const qrCanvas = document.getElementById('qrCanvas');
+        const qrDark = document.getElementById('qrDark');
+        const qrLight = document.getElementById('qrLight');
+        const darkHex = document.getElementById('darkHex');
+        const lightHex = document.getElementById('lightHex');
+        const qrSize = document.getElementById('qrSize');
+        const qrEc = document.getElementById('qrEc');
+        const qrDataInfo = document.getElementById('qrDataInfo');
+        const downloadQrBtn = document.getElementById('downloadQrBtn');
+        const copyQrBtn = document.getElementById('copyQrBtn');
+        const printQrBtn = document.getElementById('printQrBtn');
+
+        typePills.forEach(pill => {
+          pill.addEventListener('click', () => {
+            typePills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            activeType = pill.getAttribute('data-type');
+            Object.keys(panels).forEach(k => {
+              if (panels[k]) panels[k].style.display = (k === activeType) ? 'block' : 'none';
+            });
+            makeQr();
+          });
+        });
+
+        // Swatches
+        document.querySelectorAll('.qr-swatch[data-color]').forEach(sw => {
+          sw.addEventListener('click', () => {
+            qrDark.value = sw.getAttribute('data-color');
+            darkHex.textContent = qrDark.value;
+            makeQr();
+          });
+        });
+        document.querySelectorAll('.qr-swatch[data-bg]').forEach(sw => {
+          sw.addEventListener('click', () => {
+            qrLight.value = sw.getAttribute('data-bg');
+            lightHex.textContent = qrLight.value;
+            makeQr();
+          });
+        });
+
+        qrDark.addEventListener('input', () => {
+          darkHex.textContent = qrDark.value;
+          makeQr();
+        });
+        qrLight.addEventListener('input', () => {
+          lightHex.textContent = qrLight.value;
+          makeQr();
+        });
+
+        function getPayload() {
+          if (activeType === 'url') {
+            const val = document.getElementById('qrInputUrl').value.trim();
+            return val || 'https://desidesk.in/';
+          } else if (activeType === 'upi') {
+            const vpa = document.getElementById('upiId').value.trim() || 'demo@upi';
+            const name = document.getElementById('upiName').value.trim() || 'Payee';
+            const amt = document.getElementById('upiAmount').value.trim();
+            const note = document.getElementById('upiNote').value.trim();
+            let upi = 'upi://pay?pa=' + encodeURIComponent(vpa) + '&pn=' + encodeURIComponent(name) + '&cu=INR';
+            if (amt) upi += '&am=' + encodeURIComponent(amt);
+            if (note) upi += '&tn=' + encodeURIComponent(note);
+            return upi;
+          } else if (activeType === 'wifi') {
+            const ssid = document.getElementById('wifiSsid').value.trim() || 'DesiDesk_WiFi';
+            const pass = document.getElementById('wifiPass').value;
+            const type = document.getElementById('wifiType').value;
+            return 'WIFI:S:' + ssid + ';T:' + type + ';P:' + pass + ';;';
+          } else if (activeType === 'wa') {
+            let phone = document.getElementById('waPhone').value.trim().replace(/[^0-9]/g, '');
+            if (!phone) phone = '919876543210';
+            const msg = document.getElementById('waMsg').value.trim();
+            return 'https://wa.me/' + phone + (msg ? '?text=' + encodeURIComponent(msg) : '');
+          } else if (activeType === 'text') {
+            return document.getElementById('qrInputText').value.trim() || 'Welcome to DesiDesk!';
+          }
+          return 'https://desidesk.in/';
+        }
+
+        function makeQr() {
+          const payload = getPayload();
+          const size = parseInt(qrSize.value, 10) || 384;
+          const dark = qrDark.value || '#0f172a';
+          const light = qrLight.value || '#ffffff';
+          const ecLevel = qrEc ? qrEc.value : 'M';
+
+          if (typeof QRCode !== 'undefined' && QRCode.toCanvas) {
+            QRCode.toCanvas(qrCanvas, payload, {
+              width: size,
+              margin: 2,
+              errorCorrectionLevel: ecLevel,
+              color: { dark, light }
+            }, function(error) {
+              if (!error) {
+                const dataUrl = qrCanvas.toDataURL('image/png');
+                downloadQrBtn.href = dataUrl;
+                downloadQrBtn.download = 'qrcode-' + activeType + '-desidesk.png';
+                if (qrDataInfo) {
+                  qrDataInfo.textContent = 'Data size: ' + payload.length + ' chars • ' + size + '×' + size + ' px';
+                }
+              } else {
+                console.error(error);
+              }
+            });
+          }
+        }
+
+        // Live inputs
+        ['qrInputUrl', 'upiId', 'upiName', 'upiAmount', 'upiNote', 'wifiSsid', 'wifiPass', 'wifiType', 'waPhone', 'waMsg', 'qrInputText', 'qrSize', 'qrEc'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.addEventListener('input', makeQr);
+            el.addEventListener('change', makeQr);
+          }
+        });
+
+        // Copy QR Code to clipboard
+        if (copyQrBtn) {
+          copyQrBtn.addEventListener('click', async () => {
+            try {
+              qrCanvas.toBlob(async (blob) => {
+                if (!blob) return;
+                if (navigator.clipboard && window.ClipboardItem) {
+                  await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                  const origText = copyQrBtn.innerHTML;
+                  copyQrBtn.innerHTML = '✓ Copied!';
+                  copyQrBtn.classList.remove('btn-primary');
+                  copyQrBtn.classList.add('btn-success');
+                  setTimeout(() => {
+                    copyQrBtn.innerHTML = origText;
+                    copyQrBtn.classList.add('btn-primary');
+                    copyQrBtn.classList.remove('btn-success');
+                  }, 2000);
+                } else {
+                  alert('Clipboard image copy is not supported in this browser. Please use the Download button.');
+                }
+              });
+            } catch (err) {
+              alert('Could not copy image: ' + err.message);
             }
           });
         }
-      }
 
-      [qrText, qrDark, qrLight, qrSize].forEach(el => el.addEventListener('input', makeQr));
-      window.addEventListener('load', () => setTimeout(makeQr, 200));
+        // Print QR Code
+        if (printQrBtn) {
+          printQrBtn.addEventListener('click', () => {
+            const dataUrl = qrCanvas.toDataURL('image/png');
+            const win = window.open('', '_blank');
+            win.document.write('<html><head><title>Print QR Code - DesiDesk</title><style>body{display:flex;flex-direction:column;align-items:center;justify-content:center;height:90vh;font-family:sans-serif;}img{max-width:350px;}p{margin-top:1rem;color:#666;font-size:0.9rem;}</style></head><body><img src="' + dataUrl + '" /><p>Scan with Camera or QR Scanner</p><script>window.onload = function(){ window.print(); }<\\/script></body></html>');
+            win.document.close();
+          });
+        }
+
+        setTimeout(makeQr, 50);
+      })();
     `
   },
   {

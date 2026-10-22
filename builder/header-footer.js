@@ -10,6 +10,7 @@ function getHeaderHtml(relPath = '', active = '') {
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
       </div>
       <span>Desi<span class="logo-domain">Desk</span></span>
+      <span class="logo-flag-badge" title="Proudly Built for India">🇮🇳</span>
     </a>
 
     <ul class="nav-links">
@@ -30,6 +31,11 @@ function getHeaderHtml(relPath = '', active = '') {
         <span class="search-shortcut-badge">⌘K</span>
       </button>
 
+      <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
       <button class="menu-toggle" id="mobileMenuOpen" aria-label="Open mobile menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -45,6 +51,7 @@ function getHeaderHtml(relPath = '', active = '') {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
         </div>
         <span>Desi<span class="logo-domain">Desk</span></span>
+        <span class="logo-flag-badge">🇮🇳</span>
       </a>
       <button id="mobileMenuClose" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-muted)">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -76,50 +83,49 @@ function getFooterHtml(relPath = '') {
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="${relPath}index.html" class="footer-logo">
-          <div class="logo-icon" style="background:linear-gradient(135deg, #3b82f6, #1d4ed8);">
+          <div class="logo-icon" style="background:linear-gradient(135deg, #4f46e5, #06b6d4);">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
-          <span>DesiDesk.in</span>
+          <span>Desi<span class="logo-domain" style="color:#67e8f9;">Desk</span></span>
+          <span style="font-size:1.1rem;margin-left:4px;">🇮🇳</span>
         </a>
         <p class="footer-text">
-          Free, fast and 100% private browser-based online tools for everyday productivity. All processing runs locally on your device with zero server uploads.
+          India's premier all-in-one browser tools platform. 100% private, ultra-fast, and completely client-side. Your files never touch any external server.
         </p>
-        <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:#10b981;font-weight:600;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>100% Client-Side Privacy Guarantee</span>
+        <div style="display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;">
+          <span class="privacy-badge" style="background:rgba(16, 185, 129, 0.15);border-color:rgba(16, 185, 129, 0.3);color:#34d399;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Zero-Server Architecture
+          </span>
         </div>
       </div>
 
       <div>
-        <h4 class="footer-heading">Tool Categories</h4>
+        <h4 class="footer-heading">Top Categories</h4>
         <ul class="footer-links">
           <li><a href="${relPath}categories/pdf-tools.html">PDF Tools</a></li>
           <li><a href="${relPath}categories/image-tools.html">Image Tools</a></li>
-          <li><a href="${relPath}categories/text-tools.html">Text Tools</a></li>
-          <li><a href="${relPath}categories/calculator-tools.html">Calculators</a></li>
-          <li><a href="${relPath}categories/converter-tools.html">Unit Converters</a></li>
+          <li><a href="${relPath}categories/text-tools.html">Text Utilities</a></li>
+          <li><a href="${relPath}categories/calculator-tools.html">Financial & Calculators</a></li>
           <li><a href="${relPath}categories/developer-tools.html">Developer Tools</a></li>
-          <li><a href="${relPath}categories/generator-tools.html">Generators</a></li>
-          <li><a href="${relPath}categories/utility-tools.html">File Utilities</a></li>
+          <li><a href="${relPath}categories/converter-tools.html">Unit Converters</a></li>
         </ul>
       </div>
 
       <div>
         <h4 class="footer-heading">Popular Tools</h4>
         <ul class="footer-links">
+          <li><a href="${relPath}tools/generator/qr-code-generator.html">QR Code Generator (UPI & WiFi)</a></li>
+          <li><a href="${relPath}tools/pdf/merge-pdf.html">Merge PDF Online</a></li>
           <li><a href="${relPath}tools/image/image-compressor.html">Image Compressor</a></li>
-          <li><a href="${relPath}tools/pdf/merge-pdf.html">Merge PDF</a></li>
-          <li><a href="${relPath}tools/calculator/emi-calculator.html">EMI Calculator</a></li>
-          <li><a href="${relPath}tools/calculator/gst-calculator.html">GST Calculator</a></li>
-          <li><a href="${relPath}tools/developer/json-formatter.html">JSON Formatter</a></li>
-          <li><a href="${relPath}tools/generator/qr-code-generator.html">QR Code Generator</a></li>
-          <li><a href="${relPath}tools/text/word-counter.html">Word Counter</a></li>
-          <li><a href="${relPath}tools/converter/length-converter.html">Length Converter</a></li>
+          <li><a href="${relPath}tools/calculator/gst-calculator.html">GST Calculator India</a></li>
+          <li><a href="${relPath}tools/calculator/emi-calculator.html">Loan EMI Calculator</a></li>
+          <li><a href="${relPath}tools/developer/json-formatter.html">JSON Formatter & Validator</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="footer-heading">Company & Legal</h4>
+        <h4 class="footer-heading">About & Legal</h4>
         <ul class="footer-links">
           <li><a href="${relPath}about.html">About DesiDesk</a></li>
           <li><a href="${relPath}privacy-policy.html">Privacy Policy</a></li>
@@ -132,12 +138,14 @@ function getFooterHtml(relPath = '') {
     </div>
 
     <div class="footer-bottom">
-      <div>&copy; 2026 DesiDesk.in. All rights reserved. Crafted for speed, privacy, and simplicity.</div>
+      <div>
+        &copy; 2026 <strong>DesiDesk.in</strong>. Crafted with pride for speed, privacy, and simplicity.
+      </div>
       <div class="footer-legal-links">
         <a href="${relPath}privacy-policy.html">Privacy</a>
         <a href="${relPath}terms.html">Terms</a>
-        <a href="${relPath}disclaimer.html">Disclaimer</a>
-        <a href="${relPath}contact.html">Contact</a>
+        <a href="${relPath}contact.html">Support</a>
+        <a href="${relPath}index.html">All 107 Tools</a>
       </div>
     </div>
   </div>
@@ -145,13 +153,13 @@ function getFooterHtml(relPath = '') {
 `;
 }
 
-function getSearchModalHtml() {
+function getSearchModalHtml(relPath = '') {
   return `
 <div class="search-modal" id="searchModal">
   <div class="search-modal-box">
     <div class="search-modal-header">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" class="search-modal-input" id="searchModalInput" placeholder="Search 130+ online tools (e.g. compress, merge, emi, json)..." autocomplete="off" />
+      <input type="text" class="search-modal-input" id="searchModalInput" placeholder="Search 107+ online tools (e.g. qr, compress, merge, emi, json)..." autocomplete="off" />
       <button id="closeSearchBtn" style="background:none;border:none;cursor:pointer;color:var(--text-muted);padding:4px;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -167,6 +175,25 @@ function getSearchModalHtml() {
 function getCommonScript(toolsListJson, relPath = '') {
   return `
 (function() {
+  // Theme Manager
+  const themeToggle = document.getElementById('themeToggleBtn');
+  function getPreferredTheme() {
+    const saved = localStorage.getItem('desidesk_theme');
+    if (saved) return saved;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('desidesk_theme', theme);
+  }
+  applyTheme(getPreferredTheme());
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+
   const tools = ${toolsListJson};
   const searchBtn = document.getElementById('openSearchBtn');
   const searchModal = document.getElementById('searchModal');

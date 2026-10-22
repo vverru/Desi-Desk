@@ -10,7 +10,7 @@ module.exports = [
     seoTitle: 'Organize PDF Pages Online - Reorder & Delete Pages | DesiDesk',
     seoDesc: 'Rearrange, delete, and reorder PDF pages visually in your browser. 100% private, free client-side PDF page organizer on DesiDesk.',
     keywords: 'organize pdf, reorder pdf pages, delete pdf pages, rearrange pdf, sort pdf pages',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload the PDF document you want to organize.',
       'Enter the new page order sequence (e.g. "3, 1, 2, 4") or omit pages you want removed.',
@@ -133,7 +133,7 @@ module.exports = [
     seoTitle: 'Crop PDF Online - Trim PDF Margins Free | DesiDesk',
     seoDesc: 'Crop PDF margins and trim white borders online in your browser. Fast, free, secure client-side PDF cropping on DesiDesk.',
     keywords: 'crop pdf, trim pdf margins, cut pdf borders, crop pdf online, remove pdf whitespace',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload your PDF document.',
       'Specify margin trim values in points for Top, Bottom, Left, and Right.',
@@ -265,7 +265,7 @@ module.exports = [
     seoTitle: 'Sign PDF Online - Draw & Add Signature Free | DesiDesk',
     seoDesc: 'Sign PDF documents directly in your browser. Draw signature with touch or mouse and stamp onto any PDF page without upload on DesiDesk.',
     keywords: 'sign pdf, digital signature, draw signature on pdf, sign document online, electronic signature free',
-    libs: ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js'],
+    libs: ['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'],
     howToSteps: [
       'Upload the PDF document you need to sign.',
       'Draw your signature using your finger, stylus, or mouse.',
