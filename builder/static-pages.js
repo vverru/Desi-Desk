@@ -23,9 +23,9 @@ function getIndexHtml(tools) {
   })));
 
   const popularTools = tools.filter(t => [
-    'image-compressor', 'merge-pdf', 'emi-calculator', 'gst-calculator',
-    'json-formatter', 'qr-code-generator', 'word-counter', 'length-converter',
-    'password-generator', 'zip-file-creator', 'split-pdf', 'image-resizer'
+    'compress-pdf', 'merge-pdf', 'split-pdf', 'image-compressor', 'image-resizer',
+    'emi-calculator', 'gst-calculator', 'qr-code-generator', 'json-formatter',
+    'word-counter', 'length-converter', 'password-generator'
   ].includes(t.id));
 
   return `<!DOCTYPE html>
@@ -131,7 +131,7 @@ ${getHeaderHtml('', 'home')}
   </section>
 
   <!-- Browse by Category -->
-  <section class="container" style="margin-bottom:3.5rem;">
+  <section class="container" id="exploreSection" style="margin-bottom:3.5rem;">
     <div class="section-header">
       <div>
         <h2 class="section-title">Explore by Category</h2>
@@ -268,12 +268,19 @@ ${getCommonScript(toolsJson, '')}
   const noResultsAlert = document.getElementById('noResultsAlert');
   const filterPills = document.querySelectorAll('#homeFilterPills .filter-pill');
   const cards = Array.from(directoryGrid.querySelectorAll('.tool-card'));
+  const popularSection = document.getElementById('popularSection');
+  const exploreSection = document.getElementById('exploreSection');
+  const directorySection = document.getElementById('directorySection');
   let currentFilter = 'all';
 
-  function filterCards() {
+  function filterCards(shouldScroll = false) {
     const q = homeSearchInput.value.toLowerCase().trim();
     if (q) homeClearSearch.style.display = 'block';
     else homeClearSearch.style.display = 'none';
+
+    const isFiltered = currentFilter !== 'all' || q !== '';
+    if (popularSection) popularSection.style.display = isFiltered ? 'none' : 'block';
+    if (exploreSection) exploreSection.style.display = isFiltered ? 'none' : 'block';
 
     let visibleCount = 0;
     cards.forEach(card => {
@@ -293,17 +300,23 @@ ${getCommonScript(toolsJson, '')}
       }
     });
 
-    directoryTitle.textContent = currentFilter === 'all' 
+    const activePill = document.querySelector('#homeFilterPills .filter-pill.active');
+    const pillText = activePill ? activePill.textContent.split('(')[0].trim() : 'Tools';
+    directoryTitle.textContent = currentFilter === 'all' && !q
       ? 'All Online Tools (' + visibleCount + ')'
-      : 'Filtered Tools (' + visibleCount + ')';
+      : (q ? 'Search Results (' + visibleCount + ')' : pillText + ' (' + visibleCount + ')');
 
     noResultsAlert.style.display = visibleCount === 0 ? 'block' : 'none';
+
+    if (shouldScroll && directorySection && isFiltered) {
+      directorySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
-  homeSearchInput.addEventListener('input', filterCards);
+  homeSearchInput.addEventListener('input', () => filterCards(false));
   homeClearSearch.addEventListener('click', () => {
     homeSearchInput.value = '';
-    filterCards();
+    filterCards(false);
     homeSearchInput.focus();
   });
 
@@ -312,7 +325,7 @@ ${getCommonScript(toolsJson, '')}
       filterPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       currentFilter = pill.getAttribute('data-filter');
-      filterCards();
+      filterCards(true);
     });
   });
 
@@ -496,6 +509,8 @@ function buildLibraryTags(tool) {
   let tags = [];
   if (tool.category === 'pdf') {
     tags.push(`  <script src="../../assets/vendor/pdf-lib.min.js"></script>
+  <script src="../../assets/vendor/pdf.min.js"></script>
+  <script src="../../assets/vendor/jszip.min.js"></script>
   <script>
     if (typeof PDFLib === 'undefined') {
       document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"><\\\\/script>');
@@ -507,8 +522,18 @@ function buildLibraryTags(tool) {
     }
   </script>
   <script>
-    if (typeof PDFLib === 'undefined') {
-      document.write('<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"><\\\\/script>');
+    if (typeof pdfjsLib === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"><\\\\/script>');
+    }
+  </script>
+  <script>
+    if (typeof JSZip === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"><\\\\/script>');
+    }
+  </script>
+  <script>
+    if (window.pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '../../assets/vendor/pdf.worker.min.js';
     }
   </script>`);
   } else if (tool.id === 'qr-code-generator') {

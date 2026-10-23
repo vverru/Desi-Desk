@@ -1482,6 +1482,205 @@ details[open] .faq-question::after {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* PDF Visual Cards System (Matches Screenshots) */
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+  align-items: stretch;
+}
+
+.pdf-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pdf-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.pdf-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  gap: 0.5rem;
+}
+
+.pdf-card-name {
+  font-weight: 600;
+  color: var(--secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.pdf-card-size {
+  background: var(--bg-subtle);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.pdf-card-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 1.2rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.pdf-card-close:hover {
+  color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.pdf-card-preview {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+[data-theme="dark"] .pdf-card-preview {
+  background: #0f172a;
+}
+
+.pdf-card-preview canvas {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+}
+
+.pdf-card-footer {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-bottom: 0.65rem;
+  text-align: center;
+}
+
+.pdf-card-footer strong {
+  color: var(--secondary);
+}
+
+.pdf-add-card {
+  border: 2px dashed #94a3b8;
+  border-radius: var(--radius-lg);
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--bg-subtle);
+  transition: all 0.2s;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.pdf-add-card:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.pdf-add-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.pdf-add-card:hover .pdf-add-circle {
+  transform: scale(1.1);
+  background: var(--primary);
+  color: white;
+}
+
+.pdf-add-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.pdf-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  margin-top: 1.5rem;
+}
+
+.pdf-bottom-left, .pdf-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-icon-trash {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-icon-trash:hover {
+  background: #fca5a5;
+  color: #991b1b;
+  transform: scale(1.05);
+}
+
+[data-theme="dark"] .btn-icon-trash {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .footer-grid {
