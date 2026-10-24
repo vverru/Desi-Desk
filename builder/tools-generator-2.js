@@ -225,7 +225,7 @@ module.exports = [
         a: 'Between 120 and 160 characters for best display on Google search result snippets.'
       }
     ],
-    related: ['robots-txt-generator', 'sitemap-xml-generator'],
+    related: ['robots-txt-generator', 'utm-link-builder'],
     toolHtml: `
       <div class="form-grid-2">
         <div class="form-group">

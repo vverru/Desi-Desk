@@ -208,7 +208,7 @@ module.exports = [
         a: 'Hexadecimal uses base-16 with digits 0-9 and letters A-F to represent numbers compactly.'
       }
     ],
-    related: ['text-to-binary', 'text-to-ascii'],
+    related: ['text-to-binary', 'roman-numeral-converter'],
     toolHtml: `
       <div style="display:flex;flex-direction:column;gap:1.25rem;">
         <div class="form-group">

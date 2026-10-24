@@ -530,7 +530,7 @@ module.exports = [
         a: 'The robots.txt file must be placed at the root directory of your website domain (e.g. https://yourwebsite.com/robots.txt).'
       }
     ],
-    related: ['sitemap-xml-generator', 'meta-tag-generator'],
+    related: ['robots-txt-generator', 'meta-tag-generator'],
     toolHtml: `
       <div class="form-group">
         <label class="form-label">Sitemap URL:</label>

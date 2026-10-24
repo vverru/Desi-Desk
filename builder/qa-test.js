@@ -76,10 +76,10 @@ toolLinkMatches.forEach(m => {
 const sitemapPath = path.join(ROOT_DIR, 'sitemap.xml');
 assert(fs.existsSync(sitemapPath), 'sitemap.xml must exist');
 const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
-const locMatches = sitemapContent.match(/<loc>https:\/\/desidesk\.in\/([^<]*)<\/loc>/g) || [];
+const locMatches = sitemapContent.match(/<loc>https:\/\/(www\.)?desidesk\.in\/([^<]*)<\/loc>/g) || [];
 console.log(`Found ${locMatches.length} URLs in sitemap.xml.`);
 locMatches.forEach(loc => {
-  const urlPath = loc.replace('<loc>https://desidesk.in/', '').replace('</loc>', '');
+  const urlPath = loc.replace(/<loc>https:\/\/(www\.)?desidesk\.in\//, '').replace('</loc>', '');
   if (urlPath === '') {
     assert(fs.existsSync(path.join(ROOT_DIR, 'index.html')), 'Root URL must map to index.html');
   } else {

@@ -55,7 +55,7 @@ const today = new Date().toISOString().split('T')[0];
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://desidesk.in/</loc>
+    <loc>https://www.desidesk.in/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -64,7 +64,7 @@ let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 
 categories.forEach(c => {
   sitemapXml += `  <url>
-    <loc>https://desidesk.in/categories/${c.slug}.html</loc>
+    <loc>https://www.desidesk.in/categories/${c.slug}.html</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -73,7 +73,7 @@ categories.forEach(c => {
 
 tools.forEach(t => {
   sitemapXml += `  <url>
-    <loc>https://desidesk.in/tools/${t.category}/${t.slug}.html</loc>
+    <loc>https://www.desidesk.in/tools/${t.category}/${t.slug}.html</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -83,7 +83,7 @@ tools.forEach(t => {
 const infoPages = ['about.html', 'privacy-policy.html', 'terms.html', 'disclaimer.html', 'contact.html'];
 infoPages.forEach(p => {
   sitemapXml += `  <url>
-    <loc>https://desidesk.in/${p}</loc>
+    <loc>https://www.desidesk.in/${p}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>

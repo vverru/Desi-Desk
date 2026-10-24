@@ -220,7 +220,7 @@ module.exports = [
         a: 'Each character is converted into its 8-bit binary equivalent (e.g. "A" -> 01000001).'
       }
     ],
-    related: ['text-to-ascii', 'base64-encoder-decoder'],
+    related: ['reverse-text', 'base64-encoder-decoder'],
     toolHtml: `
       <div class="form-group">
         <label class="form-label">Input (Text or Binary):</label>

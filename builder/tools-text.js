@@ -27,7 +27,7 @@ module.exports = [
         a: 'Reading time is computed using the average adult reading speed of 200 words per minute (WPM).'
       }
     ],
-    related: ['case-converter', 'remove-extra-spaces', 'text-cleaner', 'slug-generator'],
+    related: ['case-converter', 'remove-extra-spaces', 'remove-duplicate-lines', 'slug-generator'],
     toolHtml: `
       <div class="stat-grid" style="margin-bottom:1.5rem;">
         <div class="stat-card">

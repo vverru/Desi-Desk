@@ -1012,7 +1012,7 @@ module.exports = [
         a: 'Base64 images are great for small icons and critical above-the-fold assets to avoid extra HTTP requests.'
       }
     ],
-    related: ['base64-to-image', 'image-compressor', 'svg-to-data-uri'],
+    related: ['base64-to-image', 'image-compressor', 'image-to-webp'],
     toolHtml: `
       <div class="dropzone" id="dropzone">
         <svg class="dropzone-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>

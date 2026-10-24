@@ -1080,7 +1080,7 @@ module.exports = [
         a: 'A MIME (Multipurpose Internet Mail Extensions) type describes the media format of a file transmitted over HTTP so browsers know how to process it.'
       }
     ],
-    related: ['file-checksum-calculator', 'file-size-analyzer'],
+    related: ['file-checksum-calculator', 'csv-viewer-filter'],
     toolHtml: `
       <div class="form-group">
         <label class="form-label">Search File Extension or MIME Type:</label>
