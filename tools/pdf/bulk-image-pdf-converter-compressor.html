@@ -1351,14 +1351,6 @@
           </svg>
           Bulk Tool
         </button>
-        <button class="nav-btn" id="nav-btn-compressor" onclick="switchMainTab('compressor')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
-            <path d="M12 12v9"></path>
-            <path d="m8 17 4 4 4-4"></path>
-          </svg>
-          PDF Compressor
-        </button>
         <button class="nav-btn" id="nav-btn-merger" onclick="switchMainTab('merger')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="8" y="2" width="13" height="13" rx="2"></rect>
@@ -1446,16 +1438,7 @@
           <circle cx="8.5" cy="8.5" r="1.5"></circle>
           <polyline points="21 15 16 10 5 21"></polyline>
         </svg>
-        All-in-One Bulk Tool
-      </button>
-      <button class="tab-btn" id="tab-btn-compress" onclick="switchMainTab('compressor')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-        </svg>
-        PDF Compressor Studio
+        All-in-One Bulk Converter & Compressor
       </button>
       <button class="tab-btn" id="tab-btn-merge" onclick="switchMainTab('merger')">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1486,25 +1469,8 @@
         <h3 class="upload-heading">Drag & Drop Images and PDFs Here</h3>
         <p class="upload-subtext">Select multiple JPG, PNG, WebP images and PDF documents together in a single batch</p>
 
-        <input type="file" id="pdf-only-input" multiple accept="application/pdf,.pdf" style="display:none;">
         <div class="upload-actions">
           <button class="btn btn-primary btn-lg" onclick="document.getElementById('file-input').click();">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="17 8 12 3 7 8"></polyline>
-              <line x1="12" y1="3" x2="12" y2="15"></line>
-            </svg>
-            Browse Mixed Files
-          </button>
-          <button class="btn btn-danger btn-lg" onclick="switchMainTab('compressor'); document.getElementById('pdf-compressor-file-input').click();">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-            Compress PDF Files Only
-          </button>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="17 8 12 3 7 8"></polyline>
@@ -1932,185 +1898,7 @@
 
 
     <!-- ========================================================
-         VIEW 2: DEDICATED PDF COMPRESSOR STUDIO
-         ======================================================== -->
-    <div id="compressor-view" style="display:none;">
-      <div class="merger-box">
-        <div class="panel-header" style="border:none; margin-bottom:1.5rem; padding-bottom:0;">
-          <div class="panel-icon pdf-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-          </div>
-          <div>
-            <h3 class="panel-title">PDF Compressor Studio</h3>
-            <p class="panel-desc">Quickly reduce single or bulk PDF files. Select target file sizes or deep raster compression.</p>
-          </div>
-        </div>
-
-        <!-- Compressor Dropzone -->
-        <div class="upload-card" id="compressor-drop-zone" style="padding:2.5rem 1.5rem; margin-bottom:1.75rem;">
-          <input type="file" id="pdf-compressor-file-input" multiple accept="application/pdf,.pdf" style="display:none;">
-          <div class="upload-icon-wrapper" style="width:58px; height:58px; background:var(--accent-pdf-subtle); color:var(--accent-pdf);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
-              <path d="M12 12v9"></path>
-              <path d="m8 17 4 4 4-4"></path>
-            </svg>
-          </div>
-          <h4 class="upload-heading" style="font-size:1.2rem;">Drop PDF Files Here to Compress</h4>
-          <p class="upload-subtext">Supports single and bulk PDF file selection with real-time optimization</p>
-          <div class="upload-actions">
-            <button class="btn btn-danger btn-lg" onclick="document.getElementById('pdf-compressor-file-input').click();">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-              Select PDF Files
-            </button>
-            <button class="btn btn-secondary" onclick="addSamplePdfToCompressor()">
-              Try with Sample PDF
-            </button>
-          </div>
-        </div>
-
-        <!-- Compressor Settings Box -->
-        <div class="settings-panel" style="margin-bottom:1.5rem;">
-          <h4 style="font-size:1.05rem; font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-            Compression Parameters
-          </h4>
-
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.25rem;">
-            <!-- Compression Mode -->
-            <div>
-              <label class="control-label">Compression Mode</label>
-              <div class="radio-pill-group">
-                <button type="button" class="radio-pill active" id="btn-comp-mode-smart" onclick="setStudioPdfMode('smart')">Mode A: Smart Optimization</button>
-                <button type="button" class="radio-pill" id="btn-comp-mode-strong" onclick="setStudioPdfMode('strong')">Mode B: Strong Raster</button>
-              </div>
-              <div id="studio-mode-smart-desc" style="font-size:0.78rem; color:var(--text-muted); margin-top:0.4rem;">
-                Preserves vector text, links, and forms. 100% loss-free quality.
-              </div>
-              <div id="studio-mode-strong-desc" style="font-size:0.78rem; color:var(--accent-warning); margin-top:0.4rem; display:none;">
-                ⚠️ Rasterizes pages to canvas. Maximum 60-90% size reduction.
-              </div>
-            </div>
-
-            <!-- Preset / Quality -->
-            <div>
-              <label class="control-label">
-                <span>Compression Level / Quality</span>
-                <span class="control-label-desc" id="studio-comp-level-badge">70%</span>
-              </label>
-              <div class="range-slider-wrapper">
-                <input type="range" class="range-slider" id="studio-comp-level-slider" min="15" max="95" value="70" oninput="document.getElementById('studio-comp-level-badge').textContent = this.value + '%'">
-              </div>
-            </div>
-
-            <!-- Target Size -->
-            <div>
-              <label class="control-label">Target File Size</label>
-              <select class="select-input" id="studio-comp-target-size">
-                <option value="0" selected>None (Best Effort)</option>
-                <option value="50">50 KB</option>
-                <option value="100">100 KB</option>
-                <option value="200">200 KB</option>
-                <option value="300">300 KB</option>
-                <option value="500">500 KB</option>
-                <option value="1024">1 MB</option>
-                <option value="2048">2 MB</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--border-color);">
-            <label class="checkbox-label">
-              <input type="checkbox" id="studio-comp-grayscale">
-              <span>Convert Pages to Grayscale (Saves extra 20–40% file size)</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" id="studio-comp-strip-meta" checked>
-              <span>Strip PDF Metadata (Author, software & timestamps)</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Compressor Queue Section -->
-        <div id="compressor-queue-container" style="display:none;">
-          <div class="queue-header-bar" style="margin-bottom:1rem;">
-            <div>
-              <span class="queue-stats-title" id="compressor-queue-title">Selected PDF Files (0)</span>
-              <span class="queue-badge-counts" id="compressor-queue-meta">0 KB total</span>
-            </div>
-            <button class="btn btn-danger btn-sm" onclick="clearCompressorQueue()">Clear All</button>
-          </div>
-
-          <div class="file-grid" id="compressor-file-list" style="margin-bottom:1.5rem;">
-            <!-- Populate dynamically -->
-          </div>
-
-          <!-- Execution Bar -->
-          <div style="text-align:center; margin-bottom:1.5rem;">
-            <button class="btn btn-danger btn-lg" id="btn-run-compressor-studio" onclick="startPdfCompressorStudio()" style="min-width:280px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></svg>
-              <span id="btn-studio-compress-text">Compress PDF Files Now</span>
-            </button>
-
-            <!-- Progress -->
-            <div class="progress-container" id="studio-progress-container" style="margin-top:1.25rem;">
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="studio-progress-fill"></div>
-              </div>
-              <div class="progress-status-text">
-                <span id="studio-progress-label">Compressing...</span>
-                <span id="studio-progress-percent">0%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Compressor Results Dashboard -->
-        <div id="compressor-results-box" style="display:none; margin-top:2rem;">
-          <div class="stats-dashboard" style="margin-bottom:1.5rem;">
-            <div class="stat-card">
-              <span class="stat-card-title">Compressed Files</span>
-              <span class="stat-card-val" id="studio-stat-count">0</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-card-title">Original Size</span>
-              <span class="stat-card-val" id="studio-stat-orig">0 KB</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-card-title">Compressed Size</span>
-              <span class="stat-card-val" id="studio-stat-output">0 KB</span>
-            </div>
-            <div class="stat-card highlight">
-              <span class="stat-card-title">Storage Saved</span>
-              <span class="stat-card-val" id="studio-stat-saved-pct">0%</span>
-              <span class="stat-card-sub" id="studio-stat-saved-bytes">Saved 0 KB</span>
-            </div>
-          </div>
-
-          <div class="results-action-bar">
-            <h4 style="font-size:1.15rem; font-weight:700;">Compressed PDF Results</h4>
-            <div class="results-btn-group">
-              <button class="btn btn-primary" onclick="downloadAllStudioZip()">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
-                Download All as ZIP
-              </button>
-              <button class="btn btn-secondary" onclick="clearStudioResults()">Clear Results</button>
-            </div>
-          </div>
-
-          <div class="results-grid" id="studio-results-grid"></div>
-        </div>
-
-      </div>
-    </div><!-- /compressor-view -->
-
-    <!-- ========================================================
-         VIEW 3: DEDICATED PDF MERGER STUDIO
+         VIEW 2: DEDICATED PDF MERGER STUDIO
          ======================================================== -->
     <div id="merger-view" class="merger-section">
       <div class="merger-box">
@@ -2438,36 +2226,26 @@
        ------------------------------------------------------------- */
     function switchMainTab(tab) {
       const converterView = document.getElementById('converter-view');
-      const compressorView = document.getElementById('compressor-view');
       const mergerView = document.getElementById('merger-view');
-
       const navConverter = document.getElementById('nav-btn-converter');
-      const navCompressor = document.getElementById('nav-btn-compressor');
       const navMerger = document.getElementById('nav-btn-merger');
-
       const tabBulk = document.getElementById('tab-btn-bulk');
-      const tabCompress = document.getElementById('tab-btn-compress');
       const tabMerge = document.getElementById('tab-btn-merge');
 
-      converterView.style.display = 'none';
-      if (compressorView) compressorView.style.display = 'none';
-      mergerView.style.display = 'none';
-
-      [navConverter, navCompressor, navMerger].forEach(b => b && b.classList.remove('active'));
-      [tabBulk, tabCompress, tabMerge].forEach(b => b && b.classList.remove('active'));
-
-      if (tab === 'compressor') {
-        if (compressorView) compressorView.style.display = 'block';
-        if (navCompressor) navCompressor.classList.add('active');
-        if (tabCompress) tabCompress.classList.add('active');
-      } else if (tab === 'merger') {
+      if (tab === 'merger') {
+        converterView.style.display = 'none';
         mergerView.style.display = 'block';
-        if (navMerger) navMerger.classList.add('active');
-        if (tabMerge) tabMerge.classList.add('active');
+        navConverter.classList.remove('active');
+        navMerger.classList.add('active');
+        tabBulk.classList.remove('active');
+        tabMerge.classList.add('active');
       } else {
         converterView.style.display = 'block';
-        if (navConverter) navConverter.classList.add('active');
-        if (tabBulk) tabBulk.classList.add('active');
+        mergerView.style.display = 'none';
+        navConverter.classList.add('active');
+        navMerger.classList.remove('active');
+        tabBulk.classList.add('active');
+        tabMerge.classList.remove('active');
       }
     }
 
@@ -4005,373 +3783,10 @@
       }
     });
 
-    
-    /* -------------------------------------------------------------
-       PDF COMPRESSOR STUDIO JAVASCRIPT LOGIC
-       ------------------------------------------------------------- */
-    state.studioQueue = [];
-    state.studioResults = [];
-    state.studioPdfMode = 'smart';
-
-    function setStudioPdfMode(mode) {
-      state.studioPdfMode = mode;
-      const btnSmart = document.getElementById('btn-comp-mode-smart');
-      const btnStrong = document.getElementById('btn-comp-mode-strong');
-      const smartDesc = document.getElementById('studio-mode-smart-desc');
-      const strongDesc = document.getElementById('studio-mode-strong-desc');
-
-      if (mode === 'smart') {
-        btnSmart.classList.add('active');
-        btnStrong.classList.remove('active');
-        smartDesc.style.display = 'block';
-        strongDesc.style.display = 'none';
-      } else {
-        btnSmart.classList.remove('active');
-        btnStrong.classList.add('active');
-        smartDesc.style.display = 'none';
-        strongDesc.style.display = 'block';
-      }
-    }
-
-    // Attach dropzone listeners for compressor studio
-    function initCompressorStudioDropzone() {
-      const dropZone = document.getElementById('compressor-drop-zone');
-      const fileInput = document.getElementById('pdf-compressor-file-input');
-
-      if (!dropZone || !fileInput) return;
-
-      ['dragenter', 'dragover'].forEach(name => {
-        dropZone.addEventListener(name, (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          dropZone.classList.add('dragover');
-        });
-      });
-
-      ['dragleave', 'drop'].forEach(name => {
-        dropZone.addEventListener(name, (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          dropZone.classList.remove('dragover');
-        });
-      });
-
-      dropZone.addEventListener('drop', (e) => {
-        if (e.dataTransfer && e.dataTransfer.files) {
-          handleStudioIncomingFiles(Array.from(e.dataTransfer.files));
-        }
-      });
-
-      fileInput.addEventListener('change', (e) => {
-        if (e.target.files) {
-          handleStudioIncomingFiles(Array.from(e.target.files));
-          fileInput.value = '';
-        }
-      });
-    }
-
-    async function handleStudioIncomingFiles(files) {
-      if (!files || files.length === 0) return;
-
-      let addedCount = 0;
-      for (const file of files) {
-        if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
-          showToast(`Skipped "${file.name}": Only PDF files are accepted here`, 'warning');
-          continue;
-        }
-
-        const item = {
-          id: 'studio_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-          file: file,
-          name: file.name,
-          size: file.size,
-          pages: null
-        };
-
-        if (typeof pdfjsLib !== 'undefined') {
-          try {
-            const buf = await file.arrayBuffer();
-            const doc = await pdfjsLib.getDocument({ data: buf }).promise;
-            item.pages = doc.numPages;
-          } catch(e) {
-            item.pages = 'PDF';
-          }
-        }
-
-        state.studioQueue.push(item);
-        addedCount++;
-      }
-
-      if (addedCount > 0) {
-        renderStudioQueue();
-        showToast(`Added ${addedCount} PDF(s) to Compressor Studio`, 'success');
-      }
-    }
-
-    function renderStudioQueue() {
-      const container = document.getElementById('compressor-queue-container');
-      const listEl = document.getElementById('compressor-file-list');
-      const titleEl = document.getElementById('compressor-queue-title');
-      const metaEl = document.getElementById('compressor-queue-meta');
-      const btnText = document.getElementById('btn-studio-compress-text');
-
-      if (state.studioQueue.length === 0) {
-        container.style.display = 'none';
-        return;
-      }
-
-      container.style.display = 'block';
-      const totalBytes = state.studioQueue.reduce((acc, c) => acc + c.size, 0);
-      titleEl.textContent = `Selected PDF Files (${state.studioQueue.length})`;
-      metaEl.textContent = `${formatFileSize(totalBytes)} total original size`;
-      btnText.textContent = `Compress ${state.studioQueue.length} PDF File(s) Now`;
-
-      listEl.innerHTML = '';
-      state.studioQueue.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'file-card';
-        card.innerHTML = `
-          <div class="file-thumb" style="background:var(--accent-pdf-subtle); color:var(--accent-pdf);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-          </div>
-          <div class="file-info">
-            <div class="file-name" title="${item.name}">${escapeHtml(item.name)}</div>
-            <div class="file-meta">
-              <span class="badge-type badge-pdf">PDF</span>
-              <span>${formatFileSize(item.size)}</span>
-              <span>•</span>
-              <span>${item.pages ? item.pages + ' pages' : 'PDF Document'}</span>
-            </div>
-          </div>
-          <button class="file-remove-btn" title="Remove" onclick="removeStudioQueueItem('${item.id}')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        `;
-        listEl.appendChild(card);
-      });
-    }
-
-    function removeStudioQueueItem(id) {
-      state.studioQueue = state.studioQueue.filter(i => i.id !== id);
-      renderStudioQueue();
-    }
-
-    function clearCompressorQueue() {
-      state.studioQueue = [];
-      renderStudioQueue();
-      document.getElementById('compressor-results-box').style.display = 'none';
-      showToast('Compressor queue cleared', 'info');
-    }
-
-    async function startPdfCompressorStudio() {
-      if (state.studioQueue.length === 0) {
-        showToast('Please add PDF files to compress first', 'warning');
-        return;
-      }
-
-      const btn = document.getElementById('btn-run-compressor-studio');
-      const progressBox = document.getElementById('studio-progress-container');
-      const progressFill = document.getElementById('studio-progress-fill');
-      const progressLabel = document.getElementById('studio-progress-label');
-      const progressPct = document.getElementById('studio-progress-percent');
-
-      btn.disabled = true;
-      progressBox.classList.add('active');
-      state.studioResults = [];
-
-      const total = state.studioQueue.length;
-      const isSmart = state.studioPdfMode === 'smart';
-      const quality = parseInt(document.getElementById('studio-comp-level-slider').value, 10) / 100;
-      const isGrayscale = document.getElementById('studio-comp-grayscale').checked;
-      const stripMeta = document.getElementById('studio-comp-strip-meta').checked;
-      const targetKb = parseInt(document.getElementById('studio-comp-target-size').value, 10);
-
-      try {
-        for (let i = 0; i < total; i++) {
-          const item = state.studioQueue[i];
-          const curr = i + 1;
-          const pct = Math.round((curr / total) * 100);
-
-          progressLabel.textContent = `Compressing (${curr}/${total}): ${item.name}...`;
-          progressFill.style.width = `${pct}%`;
-          progressPct.textContent = `${pct}%`;
-
-          const arrayBuffer = await item.file.arrayBuffer();
-          let outputBlob = null;
-
-          if (isSmart) {
-            const doc = await PDFLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
-            if (stripMeta) {
-              doc.setTitle(''); doc.setAuthor(''); doc.setSubject('');
-              doc.setKeywords([]); doc.setProducer('DesiDesk PDF Engine'); doc.setCreator('DesiDesk');
-            }
-            const bytes = await doc.save({ useObjectStreams: true });
-            outputBlob = new Blob([bytes], { type: 'application/pdf' });
-          } else {
-            // Strong Raster Compression
-            const scale = quality < 0.5 ? 0.8 : (quality < 0.8 ? 1.1 : 1.4);
-            const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
-            const pdfDoc = await loadingTask.promise;
-            const newDoc = await PDFLib.PDFDocument.create();
-
-            for (let p = 1; p <= pdfDoc.numPages; p++) {
-              const page = await pdfDoc.getPage(p);
-              const viewport = page.getViewport({ scale: scale });
-              const canvas = document.createElement('canvas');
-              canvas.width = viewport.width;
-              canvas.height = viewport.height;
-              const ctx = canvas.getContext('2d');
-              await page.render({ canvasContext: ctx, viewport: viewport }).promise;
-
-              if (isGrayscale) {
-                const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const d = imgData.data;
-                for (let j = 0; j < d.length; j += 4) {
-                  const g = 0.299 * d[j] + 0.587 * d[j+1] + 0.114 * d[j+2];
-                  d[j] = d[j+1] = d[j+2] = g;
-                }
-                ctx.putImageData(imgData, 0, 0);
-              }
-
-              const pageJpg = canvas.toDataURL('image/jpeg', quality);
-              const embeddedJpg = await newDoc.embedJpg(pageJpg);
-              const newPage = newDoc.addPage([viewport.width, viewport.height]);
-              newPage.drawImage(embeddedJpg, { x: 0, y: 0, width: viewport.width, height: viewport.height });
-              await sleep(10);
-            }
-
-            if (stripMeta) {
-              newDoc.setTitle(''); newDoc.setAuthor('');
-            }
-            const bytes = await newDoc.save({ useObjectStreams: true });
-            outputBlob = new Blob([bytes], { type: 'application/pdf' });
-          }
-
-          const baseName = item.name.replace(/\.pdf$/i, '');
-          const outName = `${baseName}_compressed.pdf`;
-
-          state.studioResults.push({
-            id: 'res_studio_' + item.id,
-            origName: item.name,
-            origSize: item.size,
-            outputName: outName,
-            outputSize: outputBlob.size,
-            blob: outputBlob,
-            url: URL.createObjectURL(outputBlob),
-            type: 'pdf',
-            error: null
-          });
-
-          await sleep(15);
-        }
-      } catch (err) {
-        console.error('Studio compressor error:', err);
-        showToast('Compression error: ' + err.message, 'error');
-      } finally {
-        btn.disabled = false;
-        progressBox.classList.remove('active');
-        renderStudioResults();
-      }
-    }
-
-    function renderStudioResults() {
-      const box = document.getElementById('compressor-results-box');
-      const grid = document.getElementById('studio-results-grid');
-      const statCount = document.getElementById('studio-stat-count');
-      const statOrig = document.getElementById('studio-stat-orig');
-      const statOut = document.getElementById('studio-stat-output');
-      const statSavedPct = document.getElementById('studio-stat-saved-pct');
-      const statSavedBytes = document.getElementById('studio-stat-saved-bytes');
-
-      if (state.studioResults.length === 0) {
-        box.style.display = 'none';
-        return;
-      }
-
-      box.style.display = 'block';
-
-      const totalOrig = state.studioResults.reduce((acc, c) => acc + c.origSize, 0);
-      const totalOut = state.studioResults.reduce((acc, c) => acc + c.outputSize, 0);
-      const savedBytes = Math.max(0, totalOrig - totalOut);
-      const savedPct = totalOrig > 0 ? ((savedBytes / totalOrig) * 100).toFixed(1) : 0;
-
-      statCount.textContent = state.studioResults.length;
-      statOrig.textContent = formatFileSize(totalOrig);
-      statOut.textContent = formatFileSize(totalOut);
-      statSavedPct.textContent = totalOrig > totalOut ? `-${savedPct}%` : '0%';
-      statSavedBytes.textContent = totalOrig > totalOut ? `Saved ${formatFileSize(savedBytes)}` : 'Optimized';
-
-      grid.innerHTML = '';
-      state.studioResults.forEach(res => {
-        grid.appendChild(createResultCard(res));
-      });
-
-      box.scrollIntoView({ behavior: 'smooth' });
-      showToast('All PDF files compressed successfully!', 'success');
-    }
-
-    async function downloadAllStudioZip() {
-      if (state.studioResults.length === 0) return;
-      if (typeof JSZip === 'undefined') {
-        showToast('JSZip library loading...', 'info');
-        return;
-      }
-      showToast('Generating ZIP...', 'info');
-      const zip = new JSZip();
-      state.studioResults.forEach(r => zip.file(r.outputName, r.blob));
-      const zipBlob = await zip.generateAsync({ type: 'blob' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(zipBlob);
-      a.download = `compressed_pdfs_${Date.now()}.zip`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      showToast('ZIP downloaded successfully!', 'success');
-    }
-
-    function clearStudioResults() {
-      state.studioResults.forEach(r => { if (r.url) URL.revokeObjectURL(r.url); });
-      state.studioResults = [];
-      document.getElementById('compressor-results-box').style.display = 'none';
-      showToast('Results cleared', 'info');
-    }
-
-    async function addSamplePdfToCompressor() {
-      showToast('Generating sample PDF...', 'info');
-      try {
-        const doc = await PDFLib.PDFDocument.create();
-        const p1 = doc.addPage([595.28, 841.89]);
-        p1.drawText('Sample Document for Compression', { x: 50, y: 760, size: 24 });
-        p1.drawText('Page 1 with sample vectors and paragraphs.', { x: 50, y: 720, size: 14 });
-        p1.drawRectangle({ x: 50, y: 560, width: 495, height: 120, borderColor: PDFLib.rgb(0.8, 0.2, 0.2), borderWidth: 2 });
-        p1.drawText('PDF Compressor Test - DesiDesk', { x: 70, y: 620, size: 16 });
-
-        const p2 = doc.addPage([595.28, 841.89]);
-        p2.drawText('Page 2: Invoice & Analytics Report', { x: 50, y: 760, size: 22 });
-        p2.drawText('Testing browser-native compression with zero server upload.', { x: 50, y: 720, size: 13 });
-
-        const bytes = await doc.save();
-        const file = new File([bytes], 'Sample_Document_To_Compress.pdf', { type: 'application/pdf' });
-        handleStudioIncomingFiles([file]);
-      } catch(e) {
-        showToast('Sample error: ' + e.message, 'error');
-      }
-    }
-
-
     // Initialize application when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
       initTheme();
       initUploadDropzone();
-      initCompressorStudioDropzone();
     });
   </script>
 </body>
